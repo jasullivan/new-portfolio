@@ -1,0 +1,213 @@
+/* general */
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400|Roboto+Slab:100,200,300,400,500,600,700,800,900&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  color: #000;
+  font-family: arial;
+  box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+h1, h2, h3, h4, h5 {
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 200;
+}
+h1, h2 {
+    font-size: 2.5em;
+}
+h3 {
+    font-size: 2em;
+}
+p, a {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  /* font-size: 1.8rem; */
+}
+/* html {
+  font-size: 10px;
+} */
+.wrapper {
+    max-width: 1500px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+/* general ends */
+
+/* bio-section */
+.bio-section {
+    background: #F7F7F7;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 552px;
+    bottom: 0px;
+    z-index: 0;
+    width: 30%;
+    height: 100%;
+    transition: all 0.3s;
+}
+.bio-section__title {
+    display: flex;
+    align-items: center;
+    height: 150px;
+}
+.bio-section__title h1 {
+    padding: 20px;
+}
+.bio-section__content, .bio-section__contacts {
+    padding: 20px;
+}
+/* bio-section ends */
+
+/* projects-section */
+.projects-section {
+    position: static;
+    overflow: visible;
+    width: 70%;
+    max-width: 1200px;
+    margin-left: 30%;
+    float: none;
+    clear: none;
+    transition: all 0.3s;
+}
+header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+    padding: 20px;
+}
+.projects-section__project-title {
+    text-align: right;
+    display: none;
+}
+.project-columns {
+    padding: 1em 1em;
+    display: flex;
+    height: calc(100% - 150px);
+    width: 100%;
+}
+.project-col {
+    position: relative;
+    margin: 0 10px;
+    /* when using flex need to specify 0 for min width and height 
+    otherwise the responsiveness is lost at an earlier screen width because of 
+    the default min width and min height */
+    flex: 1 0 75px;
+    min-width: 0;
+    min-height: 0;
+    cursor: pointer;
+    overflow-y: hidden;
+    transition: flex 0.3s;
+}
+.project-col__svg, .project-col__info-button {
+    position: absolute;
+    top: 0;
+    z-index: 4;
+    margin: 7px;
+}
+.project-col__info-button {
+    left: 30px;
+    color: #fff;
+    transition: 0.3s opacity;
+}
+.project-col__svg--hidden, .project-col__info-button--hidden {
+    opacity: 0;
+}
+.project-col--bg-colour {
+    background: rgba(255, 98, 55, 0.7);
+    height: 100%;
+    z-index: 3;
+    width: 100%;
+    position: absolute;
+}
+.project-col--bg {
+    background: url(../img/pic_1.jpg);
+    width: 100%;
+    height: 100%;
+    background-position: 50% 50%;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.project-col__content {
+    transform: scale(0);
+}
+/* projects-section ends */
+
+/* expand and open styles */
+.bio-section--narrow {
+    width: 15%;
+}
+.bio-section--narrow .bio-section__title {
+    font-size: 12px;
+}
+.bio-section--narrow .bio-section__content {
+    font-size: 0;
+    opacity: 0;
+}
+.projects-section--wide {
+    width: 85%;
+    margin-left: 15%;
+}
+.projects-section__project-title--show {
+    transform: scale(1);
+    display: block;
+}
+.project-col--expand {
+    flex: 2 0 260px;
+}
+.project-col--expand .project-col--bg-colour {
+    background: rgba(255, 98, 55, 0.2);
+}
+.project-col--open .project-col__content {
+    transform: scale(1);
+}
+.project-col--open .project-col--bg-colour {
+    background: rgba(255, 98, 55, 0);
+}
+.project-col--open {
+    flex: 1;
+    overflow-y: auto;
+}
+.project-col--closed {
+    flex: 0 0 0px;
+    margin: 0;
+}
+.project-col--closed svg {
+    display: none;
+}
+/* expand and open styles ends */
+
+/* project content style */
+.img-text-overlay {
+    position: relative;
+}
+.img-text-overlay img {
+    width: 100%;
+}
+.img-text-overlay p {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: white;
+}
+.title-and-bio {
+    width: 70%;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title-and-bio p {
+    flex: 1;
+}
+/* projects-section ends */

@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="./dist/css/main.min.css">
+    <title>New Portfolio</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="dist/css/main.min.css" />
 </head>
 <body>
-    <h1 class="title">heading</h1>
-    
-    <!-- @include _header.kit, _main.kit -->
-    <!-- @include _footer.kit -->   
-
+    <div class="wrapper">
+        <!-- @include _bio.kit -->  
+        <div class="projects-section">
+            <!-- @include _header.kit -->  
+            <!-- @include _projects.kit --> 
+        </div>
+    </div>
     <script src="./dist/js/project.min.js"></script>
 </body>
 </html>

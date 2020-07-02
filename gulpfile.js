@@ -13,19 +13,19 @@ const autoprefixer = require("gulp-autoprefixer");
 const babel = require("gulp-babel");
 const zip = require("gulp-zip");
 const del = require("del");
-const plumber = require("gulp-plumber");
-const notifier = require("gulp-notifier");
+// const plumber = require("gulp-plumber");
+// const notifier = require("gulp-notifier");
 
-notifier.defaults({
-    messages: {
-        sass: "CSS was successfully compiled",
-        js: "Javascript is ready!",
-        kit: "HTML was delivered"
-    },
-    prefix: "=====",
-    suffix: "=====",
-    exclusions: ".map"
-})
+// notifier.defaults({
+//     messages: {
+//         sass: "CSS was successfully compiled",
+//         js: "Javascript is ready!",
+//         kit: "HTML was delivered"
+//     },
+//     prefix: "=====",
+//     suffix: "=====",
+//     exclusions: ".map"
+// })
 
 filesPath = {
     sass: './src/sass/**/*.scss',
@@ -38,7 +38,7 @@ filesPath = {
 gulp.task("sass", function(done){
     return gulp
         .src([filesPath.sass, '!./src/sass/widget.scss'])
-        .pipe(plumber({errorHandler: notifier.error}))
+        // .pipe(plumber({errorHandler: notifier.error}))
         .pipe(sourcemaps.init())
         .pipe(autoprefixer())
         .pipe(sass())
@@ -51,7 +51,7 @@ gulp.task("sass", function(done){
             }
         }))
         .pipe(gulp.dest('./dist/css'))
-        .pipe(notifier.success("sass"))
+        // .pipe(notifier.success("sass"))
     done();
 })
 
@@ -59,7 +59,7 @@ gulp.task("sass", function(done){
 gulp.task("javascript", function(done){
     return gulp
         .src(filesPath.js)
-        .pipe(plumber({errorHandler: notifier.error}))
+        // .pipe(plumber({errorHandler: notifier.error}))
         .pipe(babel({
             presets: ["@babel/env"]
         }))
@@ -68,7 +68,7 @@ gulp.task("javascript", function(done){
             suffix: ".min"
         }))
         .pipe(gulp.dest('./dist/js'))
-        .pipe(notifier.success("js"))
+        // .pipe(notifier.success("js"))
     done();
 })
 
@@ -86,13 +86,13 @@ gulp.task("imagemin", function(done){
 gulp.task("kit", function(done){
     return (
         gulp.src(filesPath.html)
-        .pipe(plumber({errorHandler: notifier.error}))
+        // .pipe(plumber({errorHandler: notifier.error}))
         .pipe(kit())
         .pipe(htmlmin({
             collapseWhitespace: true
         }))
         .pipe(gulp.dest('./'))
-        .pipe(notifier.success("kit"))
+        // .pipe(notifier.success("kit"))
     )
     done();
 })
