@@ -1,0 +1,51 @@
+/* bio-section */
+.bio-section {
+    background: #F7F7F7;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 552px;
+    bottom: 0px;
+    z-index: 0;
+    width: 30%;
+    height: 100%;
+    transition: all 0.3s;
+    &__title {
+        display: flex;
+        align-items: center;
+        height: 150px;
+        h1 {
+            padding: 20px;
+        }
+    }
+    &__content {
+        padding: 20px;
+    }
+    &__contacts {
+        padding: 20px;
+    }
+    &--narrow {
+        width: 15%;
+        h1 {
+            font-size: 3rem;
+        }
+        .bio-section__content {
+            font-size: 0;
+            opacity: 0;
+        }
+    }
+}
+/* bio-section ends */
+
+
+/* expand and open styles */
+// .bio-section--narrow {
+//     width: 15%;
+// }
+// .bio-section--narrow h1 {
+//     font-size: 3rem;
+// }
+// .bio-section--narrow .bio-section__content {
+//     font-size: 0;
+//     opacity: 0;
+// }

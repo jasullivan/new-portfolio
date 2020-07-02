@@ -1,0 +1,39 @@
+/* reset for different browsers - normalize and reset not really needed anymore */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    /* better to inherit this from body so it's more future proof and is the standard approach */
+    box-sizing: inherit; 
+}
+
+// * {
+//     padding: 0;
+//     margin: 0;
+//     color: #000;
+//     font-family: arial;
+//     box-sizing: border-box;
+//   }
+
+html, body {
+    height: 100%;
+}
+html {
+    /* needs to be % so that it doesn't overide the browser default size. */
+    /* this would mean users wouldn't be able to zoom in */
+    /* font-size: 10px; */
+    /* this defines what 1rem is*/
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box; 
+}
+.wrapper {
+    max-width: 1500px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+}
