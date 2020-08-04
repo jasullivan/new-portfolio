@@ -1,8 +1,14 @@
 header {
-    position: relative;
+    /*position: fixed;*/
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 150px;
-    padding: 20px;
+    height: 10rem;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 3;
+    /*transition: all 1s;*/
+    @include respond(lg) {
+        height: 15rem; 
+    }
 }

@@ -1,40 +1,46 @@
 const bioSection = document.querySelector('.bio-section');
 const projectSection = document.querySelector('.projects-section');
-
+const projectColumnContainer = document.querySelector('.project-columns');
 const projectColumns = document.querySelectorAll('.project-col');
-const projectTitles = document.querySelectorAll('.projects-section__project-title');
 
+const mainProjectsTitle = document.querySelector('.projects-title');
+
+const desktopProjectTitles = document.querySelectorAll('.projects-section__project-title--desk');
+// const mobProjectTitles = document.querySelectorAll('.projects-section__project-title--mob');
+ 
 // const projectTitle = document.querySelector('.projects-section__project-title');
 // console.log(document.querySelector('.projects-section__project-title').getAttribute('data-project'))
 projectColumns.forEach(col => {
   col.addEventListener('mouseenter', e => {
+    const open = col.classList.contains('project-col--open');
     const expanded = col.classList.contains('project-col--expand');
-    if(!expanded) {
+    if(!expanded && !open) {
         projectColumns.forEach(col => (col.classList.remove('project-col--expand')));
         col.classList.add('project-col--expand');
-
-        projectTitles.forEach(title => {
+        // col.classList.remove('project-col--minimised');
+        
+        desktopProjectTitles.forEach(title => {
             if(title.getAttribute('data-project') === col.getAttribute('data-project')) {
-                projectTitles.forEach(title => (title.classList.remove('projects-section__project-title--show')));
-                title.classList.add('projects-section__project-title--show');
+                desktopProjectTitles.forEach(title => (title.classList.remove('projects-section__project-title--desk--show')));
+                title.classList.add('projects-section__project-title--desk--show');
             }
         })
-        // setTimeout(() => {
-            col.querySelector('.project-col__info-button').classList.remove('project-col__info-button--hidden'); 
-        // }, 100);
-        
+        col.querySelector('.project-col__info-button').classList.remove('project-col__info-button--hidden'); 
     }
   })
   col.addEventListener('mouseleave', e => {
+    const open = col.classList.contains('project-col--open');
     const expanded = col.classList.contains('project-col--expand');
-    if(expanded){
+    if(expanded && !open){
         projectColumns.forEach(col => (col.classList.remove('project-col--expand')));
         col.classList.remove('project-col--expand');
+        // col.classList.add('project-col--minimised');
+        
 
-        projectTitles.forEach(title => {
+        desktopProjectTitles.forEach(title => {
             if(title.getAttribute('data-project') === col.getAttribute('data-project')) {
-                projectTitles.forEach(title => (title.classList.remove('projects-section__project-title--show')));
-                title.classList.remove('projects-section__project-title--show');
+                desktopProjectTitles.forEach(title => (title.classList.remove('projects-section__project-title--desk--show')));
+                title.classList.remove('projects-section__project-title--desk--show');
             }
         });
 
@@ -43,45 +49,56 @@ projectColumns.forEach(col => {
   })
   col.addEventListener('click', e => {
     const open = col.classList.contains('project-col--open');
-    if(open){
-        projectColumns.forEach(col => (col.classList.remove('project-col--open')));
-        projectColumns.forEach(col => (col.classList.remove('project-col--closed')));
-        col.classList.remove('project-col--open');
-        col.classList.add('project-col--expand');
-        bioSection.classList.remove('bio-section--narrow');
-        projectSection.classList.remove('projects-section--wide');
-
-        // projectTitles.forEach(title => {
-        //     if(title.getAttribute('data-project') === col.getAttribute('data-project')) {
-        //         projectTitles.forEach(title => (
-        //             title.classList.remove('projects-section__project-title--show')));
-        //             title.classList.remove('projects-section__project-title--show');
-        //     }
-        // });
-        setTimeout(() => {
-            col.querySelector('.project-col__info-button').classList.remove('project-col__info-button--hidden'); 
-            col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden');
-        }, 100);
-    } else {
+    if(!open){
+        projectColumnContainer.classList.add('project-columns--open');
         projectColumns.forEach(col => (col.classList.remove('project-col--open')));
         projectColumns.forEach(col => (col.classList.add('project-col--closed')));
         col.classList.remove('project-col--closed');
         col.classList.add('project-col--open');
         col.classList.remove('project-col--expand');
-        bioSection.classList.add('bio-section--narrow');
-        projectSection.classList.add('projects-section--wide');
+        col.classList.remove('project-col--regular');
+        col.addEventListener('scroll', event => {
+            console.log(col.scrollTop)
+        })
 
-        projectTitles.forEach(title => {
+        desktopProjectTitles.forEach(title => {
             if(title.getAttribute('data-project') === col.getAttribute('data-project')) {
-                projectTitles.forEach(title => (
-                    title.classList.remove('projects-section__project-title--show')));
-                    title.classList.add('projects-section__project-title--show');
+                desktopProjectTitles.forEach(title => (
+                    title.classList.remove('projects-section__project-title--desk--show')));
+                    title.classList.add('projects-section__project-title--desk--show');
             }
         });
         setTimeout(() => {
             col.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
             col.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
         }, 100);
+        setTimeout(() => {
+            col.classList.add('project-col--scroll');
+        }, 1000);
     }
   })
+  mainProjectsTitle.addEventListener('click', e => {
+    const open = col.classList.contains('project-col--open');
+        if(open){
+            projectColumnContainer.classList.remove('project-columns--open');
+            desktopProjectTitles.forEach(title => title.classList.remove('projects-section__project-title--desk--show'))
+
+            col.classList.remove('project-col--open');
+            col.classList.add('project-col--regular');
+            
+            col.scroll({
+                top: 0,
+                behavior: 'smooth'
+            })
+
+            col.classList.remove('project-col--scroll');
+
+            projectColumns.forEach(col => (col.classList.remove('project-col--open')));
+            projectColumns.forEach(col => (col.classList.remove('project-col--closed')));
+
+            setTimeout(() => { 
+                col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden');
+            }, 100);
+        }
+    })
 })

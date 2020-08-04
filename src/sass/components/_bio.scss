@@ -1,51 +1,76 @@
 /* bio-section */
 .bio-section {
+    display: flex;
     background: #F7F7F7;
+    z-index: 5;
+    width: 100%;
+    justify-content: space-between;
     position: fixed;
-    left: 0px;
-    top: 0px;
-    right: 552px;
-    bottom: 0px;
-    z-index: 0;
-    width: 30%;
-    height: 100%;
-    transition: all 0.3s;
+    top: 0;
+   /* @include respond(lg) {
+        position: relative;
+        justify-content: start;
+    }*/
+    /* TRANSITION
+    transition: all 1.5s;
+    transition-timing-function: linear;*/
+
+    @include respond(lg) {
+        /*display: block;
+        position: fixed;*/
+        left: 0px;
+        top: 0px;
+        /*right: 552px;*/
+        width: 30rem;
+        height: 100%;
+        bottom: 0px;
+        flex-direction: column;
+    }
     &__title {
         display: flex;
         align-items: center;
-        height: 150px;
+        height: 10rem;
+        @include respond(lg) {
+            height: 15rem;
+        }
         h1 {
             padding: 20px;
         }
     }
-    &__content {
-        padding: 20px;
+    &__info {
+        height: 0;
+        font-size: 0;
+        opacity: 0;
+        @include respond(lg) {
+            padding: 20px;
+            display: block;
+            height: auto;
+            font-size: initial;
+            opacity: 1;
+        }
     }
     &__contacts {
         padding: 20px;
+        display: flex;
+        align-items: center;
+        @include respond(lg) {
+            display: block;
+        }
     }
+    /* when projects expanded */
     &--narrow {
-        width: 15%;
-        h1 {
-            font-size: 3rem;
-        }
-        .bio-section__content {
-            font-size: 0;
-            opacity: 0;
+        @include respond(lg) {
+            width: 15%;
+            .bio-section__title {
+                font-size: 3rem;
+            }
+            .bio-section__info {
+                font-size: 0;
+                opacity: 0;
+            }
         }
     }
+    /* when projects expanded */
 }
 /* bio-section ends */
 
-
-/* expand and open styles */
-// .bio-section--narrow {
-//     width: 15%;
-// }
-// .bio-section--narrow h1 {
-//     font-size: 3rem;
-// }
-// .bio-section--narrow .bio-section__content {
-//     font-size: 0;
-//     opacity: 0;
-// }
