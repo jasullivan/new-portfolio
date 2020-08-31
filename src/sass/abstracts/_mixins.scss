@@ -13,13 +13,13 @@
     @media (min-width: 48em) { @content }; /****768px****/
   }
   @if $breakpoint == lg {
-    @media (min-width: 62em) { @content }; /****992px****/
+    @media (min-width: 62.5em) { @content }; /****1000px****/
   }
   @if $breakpoint == xlg {
     @media (min-width: 75em) { @content }; /****1200px****/
   }
-}
-@mixin tpr-max-width {
+} 
+/*@mixin tpr-max-width {
   max-width: 120rem;
   margin: 0 auto;
-}
+}*/

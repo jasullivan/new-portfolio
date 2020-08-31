@@ -1,9 +1,11 @@
+const openWrapper = document.querySelector('.wrapper');
 const bioSection = document.querySelector('.bio-section');
 const projectSection = document.querySelector('.projects-section');
 const projectColumnContainer = document.querySelector('.project-columns');
 const projectColumns = document.querySelectorAll('.project-col');
 
-const mainProjectsTitle = document.querySelector('.projects-title');
+const projectsCloseButtons = document.querySelectorAll('.projects-section__close');
+const mobProjectsCloseButtons = document.querySelectorAll('.mob-projects-section__close');
 
 const desktopProjectTitles = document.querySelectorAll('.projects-section__project-title--desk');
 // const mobProjectTitles = document.querySelectorAll('.projects-section__project-title--mob');
@@ -50,6 +52,7 @@ projectColumns.forEach(col => {
   col.addEventListener('click', e => {
     const open = col.classList.contains('project-col--open');
     if(!open){
+        openWrapper.classList.add('open');
         projectColumnContainer.classList.add('project-columns--open');
         projectColumns.forEach(col => (col.classList.remove('project-col--open')));
         projectColumns.forEach(col => (col.classList.add('project-col--closed')));
@@ -68,37 +71,68 @@ projectColumns.forEach(col => {
                     title.classList.add('projects-section__project-title--desk--show');
             }
         });
+
         setTimeout(() => {
             col.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
             col.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
         }, 100);
         setTimeout(() => {
             col.classList.add('project-col--scroll');
+            console.log('heeeelllloooooo')
         }, 1000);
     }
   })
-  mainProjectsTitle.addEventListener('click', e => {
-    const open = col.classList.contains('project-col--open');
-        if(open){
-            projectColumnContainer.classList.remove('project-columns--open');
-            desktopProjectTitles.forEach(title => title.classList.remove('projects-section__project-title--desk--show'))
+    projectsCloseButtons.forEach(closeButton => {
+        closeButton.addEventListener('click', e => {
+            const open = col.classList.contains('project-col--open');
+            if(open){
+                openWrapper.classList.remove('open');
+                console.log('was open desk')
+                projectColumnContainer.classList.remove('project-columns--open');
+                desktopProjectTitles.forEach(title => title.classList.remove('projects-section__project-title--desk--show'))
 
-            col.classList.remove('project-col--open');
-            col.classList.add('project-col--regular');
-            
-            col.scroll({
-                top: 0,
-                behavior: 'smooth'
-            })
+                col.classList.remove('project-col--open');
+                col.classList.add('project-col--regular');
+                col.scroll({
+                    top: 0,
+                    behavior: 'smooth'
+                })
+                col.classList.remove('project-col--scroll');
 
-            col.classList.remove('project-col--scroll');
+                projectColumns.forEach(col => (col.classList.remove('project-col--open')));
+                projectColumns.forEach(col => (col.classList.remove('project-col--closed')));
 
-            projectColumns.forEach(col => (col.classList.remove('project-col--open')));
-            projectColumns.forEach(col => (col.classList.remove('project-col--closed')));
-
-            setTimeout(() => { 
-                col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden');
-            }, 100);
-        }
+                setTimeout(() => { 
+                    col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden');
+                }, 100);
+            }
+        })
     })
+    // mobProjectsCloseButtons.forEach(mobCloseButton => {
+    //     console.log('forEach mob')
+    //     mobCloseButton.addEventListener('click', e => {
+    //         console.log('click mob')
+    //         const open = col.classList.contains('project-col--open');
+    //         if(open){
+    //             console.log('was open mob')
+    //             document.querySelector('.project-columns').classList.remove('project-columns--open');
+    //             desktopProjectTitles.forEach(title => title.classList.remove('projects-section__project-title--desk--show'))
+
+    //             col.classList.remove('project-col--open');
+    //             col.classList.add('project-col--regular');
+    //             col.scroll({
+    //                 top: 0,
+    //                 behavior: 'smooth'
+    //             })
+    //             col.classList.remove('project-col--scroll');
+
+    //             projectColumns.forEach(col => (col.classList.remove('project-col--open')));
+    //             projectColumns.forEach(col => (col.classList.remove('project-col--closed')));
+
+    //             setTimeout(() => { 
+    //                 col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden');
+    //             }, 100);
+    //         }
+    //     })
+    // })
 })
