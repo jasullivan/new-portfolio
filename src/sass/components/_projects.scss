@@ -105,16 +105,26 @@
     &__project-title--desk {
         text-align: right;
         display: none;
+        transform: translateY(15px);
         &--show {
             display: block;
             h3 {display: none;}
             h4 {display: none;}
-            p {display: block;}
+            /* p {display: block;} */
             @include respond(lg) {
-                transform: scale(1);
-                display: block;
+                /* transform: scale(1);
+                 display: block; */
                 h3 {display: block;}
                 h4 {display: block;}
+            }
+        }
+        .projects-section__close-button {
+            transform: translateY(22px);
+            opacity: 0;
+            cursor: pointer;
+            transition: opacity 1s;
+            &--show {
+                opacity: 1;
             }
         }
     }
@@ -182,6 +192,10 @@
             padding-bottom: 1rem;
         }
     }
+}
+.project-col .project-col__bg, .project-col .project-col__content,
+.project-col .project-col__svg, .project-col .project-col__info-button {
+    pointer-events: none;
 }
 .project-col {
     position: relative;
