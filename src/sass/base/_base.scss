@@ -19,7 +19,9 @@
 html, body {
     @include respond(lg) {
         /*height: 100%;*/
-        overflow-y: hidden;
+
+        /*do i need this? doesnt work on safari 
+        overflow-y: hidden;*/
     }
 }
 html {
@@ -53,25 +55,49 @@ body {
     }
     &.open {
         .bio-section {
-            z-index: 2;
+            /*z-index: 2;
+            opacity: 0;*/
+
+            opacity: 1;
+            z-index: 6;
             @include respond(lg) {
+                opacity: 1;
                 z-index: 5;
             }
         }
         .projects-section {
-            padding-top: 0;
+            /*padding-top: 0;
+            transform: translateY(0rem);*/
             background: #f7f7f7;
+            z-index: 4;
+            
             @include respond(lg) {
                 background: #fff;
             }
-            header {
-                top: 0;
-            }
+
+
+            /*header {
+                opacity: 0;
+            }*/
+
+
+
         }
         footer {
             position: fixed;
             bottom: 0;
             width: 100%;
+        }
+    }
+
+
+    /*to stop double scroll on and 100vh so project fully scrolls*/
+    &.overflowHide {
+        /*overflow-y: hidden;
+        height: 100vh;*/
+        @include respond(lg) {
+            overflow-y: auto;
+            height: auto;
         }
     }
 }

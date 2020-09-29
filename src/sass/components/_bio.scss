@@ -7,14 +7,7 @@
     justify-content: space-between;
     position: fixed;
     top: 0;
-   /* @include respond(lg) {
-        position: relative;
-        justify-content: start;
-    }*/
-    /* TRANSITION
-    transition: all 1.5s;
-    transition-timing-function: linear;*/
-
+    height: 10rem;
     @include respond(lg) {
         /*display: block;
         position: fixed;*/
@@ -34,19 +27,51 @@
             height: 15rem;
         }
         h1 {
-            padding: 20px;
+            padding: 10px 10px 5px;
+            @include respond(lg) {
+                padding: 20px;
+            }
+        }
+        h2 {
+            padding: 0px 10px 5px;
+            @include respond(lg) {
+                padding: 20px;
+            }
+        }
+    }
+    &__mob-subtitle {
+        display: block;
+        @include respond(lg) {
+            display: none;
+        }
+    }
+    &__close-button {
+        /*transform: translateY(22px);*/
+        opacity: 0;
+        cursor: pointer;
+        /*transition: opacity 0.75s ease-in;*/
+        display: none;
+        &--show {
+            opacity: 1;
+            display: block;
+        }
+        @include respond(lg) {
+            opacity: 0;
+            display: none;
         }
     }
     &__info {
         height: 0;
         font-size: 0;
         opacity: 0;
+        display: none;
         @include respond(lg) {
             padding: 20px;
             display: block;
             height: auto;
             font-size: initial;
             opacity: 1;
+            display: block;
         }
     }
     &__contacts {

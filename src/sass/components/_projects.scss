@@ -86,13 +86,18 @@
 }
 
 /* projects-section - found in index */
+/* header and project-columns - parent */
 .projects-section {
     width: 100%;
     /*max-width: 1200px;*/
     position: relative;
-    padding-top: 10rem;
-    z-index: 4;
+    /*padding-top: 10rem;*/
+    transform: translateY(0rem);
+    
+
+    /*transition: transform 0.5s 0.8s ease-in;*/
     @include respond(lg) {
+        transform: translateY(0rem);
         padding-top: 0;
         position: fixed;
         overflow: visible;
@@ -122,9 +127,10 @@
             transform: translateY(22px);
             opacity: 0;
             cursor: pointer;
-            transition: opacity 1s;
+            transition: opacity 0.75s ease-in;
             &--show {
                 opacity: 1;
+                /*margin-top: 3rem;*/
             }
         }
     }
@@ -137,7 +143,6 @@
         left: 10px;
         z-index: 5;
         color: #fff;
-        transition: all 0.5s;
         @include respond(lg) {
             display: none;
         }
@@ -148,46 +153,54 @@
             }
         }
     }
-    &--lrg {
-        /* transition: all 0.3s; */
+    /*&--lrg {
         @include respond(lg) {
             width: 85%;
             margin-left: 15%;
         }
-        header {
-            /*padding: 0 0 0 2rem;*/
-            padding: 2rem;
-        }
         .project-columns {
-            /*padding: 1em 0 1em 1em;*/
             padding: 1em;
         }
-    }
+    }*/
 }
 .project-columns {
-    padding: 0 1em 1em;
+    padding: 0 1em 2em;
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-bottom: 1rem;
-
-    /*height: 100vh;*/
+    transform: translateY(11rem);
+    transition: transform 1s;
     @include respond(lg) {
         flex-direction: row;
         height: calc(100% - 150px);
         width: 100%;
+        transform: translateY(0);
     }
     &--open {
-        position: fixed;
-        /*height: 85vh;
-        top: 11rem;*/
-        top: 10rem;
+        /*position: fixed;
         height: 85vh;
-        padding-bottom: 2rem;
+        top: 11rem;
+        top: 10rem;*/
+
+        overflow-y: hidden;
+
+        /*transform: translateY(11rem);*/
+        /*height: 100vh;*/
+
+        height: calc(100% - 150px);
+
+
+        /*padding: 0;*/
+
+        /*height: 85vh;
+        padding-bottom: 2rem;*/
         background: #fff;
+        /*transition: transform 3s;*/
         @include respond(lg) {
+            transform: translateY(0rem);
             position: static;
-            height: calc(100% - 150px);
+            /*height: calc(100% - 150px);*/
             top: auto;
             padding-bottom: 1rem;
         }
@@ -204,6 +217,9 @@
     height: 10rem;
     cursor: pointer;
     overflow-y: hidden;
+    
+
+    /*transition: height 0.1s;*/
     @include respond(lg) {
         overflow-y: hidden;
         overflow-x: hidden;
@@ -221,10 +237,6 @@
             transition: flex-basis 0.5s 0.15s, flex-grow 0.5s 0.15s;
         }
     }
-    /*&--minimised {
-        /*TRANSITION
-        /*transition: flex-basis 0.5s 0.15s, flex-grow 0.5s 0.15s;
-    }*/
     &--expand {
         @include respond(lg) {
             flex: 2 0 260px;
@@ -232,27 +244,34 @@
         }
     }
     &--open {
-        height: auto;
+        /*******************************/
+        /* added and removed in JS now */
+        /*******************************/
+        height: 100%;
         @include respond(lg) {
             flex: 2 0 260px;
             /*flex: 20 0 260px;*/
            /*height: 100vh; 
             overflow-y: auto;*/
-    
-
-            /*do i need these?*/
+            height: auto;
+            /*do i need these?
             margin-left: 1rem;
-            margin-right: 1rem;
+            margin-right: 1rem;*/
             
         }
     }
     &--scroll {
-        overflow-y: auto;
+        @include respond(lg) {
+            overflow-y: auto;
+        }
     }
     &--closed {
         margin: 0 1rem;
         height: 0;
+        opacity: 0;
+        transition: opacity 0.1s ease-in, margin 0.5s 0.5s, height 0.5s 0.5s;
         @include respond(lg) {
+            opacity: 1;
             height: auto;
             /*flex: 1 0 0px;*/
             flex: 0 0 0px;
@@ -268,16 +287,25 @@
         z-index: 4;
         width: 100%;
         position: absolute;
-        opacity: 1; 
+        opacity: 0; 
         /*&--one {background: #ff6237;}*/
         &--one {background: #4e3bcc;}
         &--two {background: #ad409f;}
         &--three {background: #290af2;}
         &--four {background: #b3c445;}
         &--five {background: #b50b9e;}
-        
-        /*TRANSITION*/
-        /*transition: background-color 0.75s 0s, height 0.75s 0.5s, opacity 0.75s 1.75s;*/
+
+        /* new to fade in col */
+        transition: opacity 0.75s ease-in;
+
+        @include respond(lg) {
+            opacity: 1; 
+        }
+        &--mob-show {
+            opacity: 1; 
+        }
+        /*TRANSITION
+        transition: height 0.75s 10.5s, opacity 0.75s 11.75s;*/
 
         
     
@@ -443,7 +471,10 @@
     opacity: 1;
     /*top: 5vh;*/
     top: 10rem;
+    padding-bottom: 10rem;
+    transition: opacity 0.5s 0.35s ease-in, top 0.5s ease-in;
     @include respond(lg) {
+        padding-bottom: 0rem;
         top: 5vh;
         animation-name: openContent; 
         animation-duration: 0.5s; 
@@ -493,10 +524,6 @@
         flex: 1;
     }
 }
-
-
-
-
 .hide {
     display: none;
 }
