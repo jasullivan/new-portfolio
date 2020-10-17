@@ -232,9 +232,13 @@
         height: auto;
 
 
-        transition: flex-basis 0.5s 0.15s, flex-grow 0.5s 0.15s;
+        /*transition: flex-basis 0.5s 0.15s, flex-grow 0.5s 0.15s;
+         for safari */
+        transition: all 0.4s 0.15s;
         &:hover {
-            transition: flex-basis 0.5s 0.15s, flex-grow 0.5s 0.15s;
+            /*transition: flex-basis 0.5s 0.15s, flex-grow 0.5s 0.15s;
+             for safari */
+            transition: all 0.4s 0.15s;
         }
     }
     &--expand {
@@ -249,7 +253,7 @@
         /*******************************/
         height: 100%;
         @include respond(lg) {
-            flex: 2 0 260px;
+            flex: 17 0 260px;
             /*flex: 20 0 260px;*/
            /*height: 100vh; 
             overflow-y: auto;*/
@@ -269,12 +273,15 @@
         margin: 0 1rem;
         height: 0;
         opacity: 0;
-        transition: opacity 0.1s ease-in, margin 0.5s 0.5s, height 0.5s 0.5s;
+        /*transition: opacity 0.1s ease-in, margin 0.5s 0.5s, height 0.5s 0.5s;
+        for safari */
+        transition: all 0.4s 0.15s;
+
         @include respond(lg) {
             opacity: 1;
             height: auto;
             /*flex: 1 0 0px;*/
-            flex: 0 0 0px;
+            flex: 1 0 10px;
             margin: 0;
         }
     }
@@ -405,14 +412,22 @@
 
 /* open and closing styles */
 /*animation: once col is chosen the remaining columns slide and shrink away*/
-.project-col--regular.project-col--closed {
-    @include respond(lg) {
+
+/*******************************
+/*removing this means when closed a thin col is left*/
+ /*.project-col--regular.project-col--closed {
+   @include respond(lg) {
         animation-name: openCol; 
         animation-duration: 0.5s; 
         animation-fill-mode: forwards; 
         animation-timing-function: linear;
     }
-}
+}*/
+/*removing this means when closed a thin col is left*/
+/*******************************
+
+
+
 /*.project-col--regular {
     @include respond(lg) {
         animation-name: closeCol; 
