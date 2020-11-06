@@ -48,19 +48,9 @@ const projectContract = (e) => {
 const hoverFunctionality = (hoverType) => {
     projectColumnContainer.addEventListener(hoverType, e => {
         if(e.target.matches('.project-col__bg-colour') && e.target.parentElement.classList.contains('project-col--closed')) {
-            
-            //add P which will be plus sign
-            const addP = () => {
-                var para = document.createElement("p");
-                var node = document.createTextNode("P");
-                para.appendChild(node);
-                e.target.appendChild(para).classList.add('para');
-            }
-            const removeP = () => {
-                e.target.querySelector('.para').remove();
-            }
-            hoverType === "mouseover" ? addP() : removeP();
-            
+            hoverType === "mouseover" 
+                ? e.target.parentElement.querySelector('svg').classList.add('openIcon') 
+                : e.target.parentElement.querySelector('svg').classList.remove('openIcon') 
         } else if(e.target.matches('.project-col__bg-colour')) { 
             const colsClosed = !e.target.parentElement.classList.contains('project-col--expand') && !e.target.parentElement.classList.contains('project-col--open');
             colsClosed ? projectExpand(e) : projectContract(e);
@@ -106,6 +96,7 @@ projectColumnContainer.addEventListener('click', e => {
                     });
                 });
                 projectColumns.forEach(col => (col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden')));
+                e.target.parentElement.querySelector('svg').classList.remove('openIcon') 
                 // projectColumns.forEach(col => (col.querySelector('.project-col__bg-colour').classList.remove('project-col__bg-colour--mob-show')));
 
                 

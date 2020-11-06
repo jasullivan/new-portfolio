@@ -319,6 +319,13 @@
         @include respond(lg) {
             opacity: 1; 
         }
+        /*svg {
+            opacity: 1;
+            display: block;
+            &.svg--hide {
+                opacity: 0
+            }
+        }*/
         &--mob-show {
             opacity: 1; 
         }
@@ -531,6 +538,11 @@
 }
 .project-col--closed svg {
     display: none;
+    &.openIcon {
+        display: flex;
+        width: 100%;
+        margin: 5px 0;
+    }
 }
 /* expand and open styles ends */
 
