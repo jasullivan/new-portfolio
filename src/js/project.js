@@ -47,7 +47,21 @@ const projectContract = (e) => {
 // hover functions
 const hoverFunctionality = (hoverType) => {
     projectColumnContainer.addEventListener(hoverType, e => {
-        if(e.target.matches('.project-col__bg-colour')) { 
+        if(e.target.matches('.project-col__bg-colour') && e.target.parentElement.classList.contains('project-col--closed')) {
+            
+            //add P which will be plus sign
+            const addP = () => {
+                var para = document.createElement("p");
+                var node = document.createTextNode("P");
+                para.appendChild(node);
+                e.target.appendChild(para).classList.add('para');
+            }
+            const removeP = () => {
+                e.target.querySelector('.para').remove();
+            }
+            hoverType === "mouseover" ? addP() : removeP();
+            
+        } else if(e.target.matches('.project-col__bg-colour')) { 
             const colsClosed = !e.target.parentElement.classList.contains('project-col--expand') && !e.target.parentElement.classList.contains('project-col--open');
             colsClosed ? projectExpand(e) : projectContract(e);
         }
@@ -62,6 +76,7 @@ projectColumnContainer.addEventListener('click', e => {
     if(e.target.matches('.project-col__bg-colour')) { 
         const projectColumn = e.target.parentElement;
         const open = projectColumn.classList.contains('project-col--open');
+        const closed = projectColumn.classList.contains('project-col--closed');
 
         // *********************************************************************
         // this isnt quite correct - does it say if(!open && mediaQ.matches) ??
@@ -70,6 +85,50 @@ projectColumnContainer.addEventListener('click', e => {
 
         // desktop
         if(!open && mediaQ.matches){
+            // e.target.removeChild('.para');
+            // console.log(document.querySelector('para'))
+            
+            // a column is open and remaining columns are closed but are now visible and can be clicked
+            if(closed) {
+                var paragraph = e.target.querySelector('.para');
+                paragraph ? paragraph.remove() : console.log('no para yet');
+                wrapper.classList.add('open');
+                projectColumnContainer.classList.add('project-columns--open');
+
+                // projectColumns.forEach(col => (col.classList.remove('project-col--open')));
+                projectColumns.forEach(col => (col.classList.remove('project-col--scroll')));
+                projectColumns.forEach(col => (col.classList.add('project-col--regular')));
+                projectColumns.forEach(col => {
+                    // col.classList.add('project-col--closed');
+                    col.scroll({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+                projectColumns.forEach(col => (col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden')));
+                // projectColumns.forEach(col => (col.querySelector('.project-col__bg-colour').classList.remove('project-col__bg-colour--mob-show')));
+
+                
+                // projectColumn.classList.remove('project-col--closed', 'project-col--expand', 'project-col--regular');
+                // projectColumn.classList.add('project-col--open');
+                // projectColumn.classList.remove('project-col--expand');
+                // projectColumn.classList.remove('project-col--regular');
+                // projectColumn.querySelector('.project-col__info-button').classList.remove('project-col__info-button--hidden'); 
+                // projectColumn.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
+                
+                // desktopTitlesAdd(e);
+
+                // setTimeout(() => {
+                //     projectColumn.classList.add('project-col--scroll');
+                // }, 750);
+
+                //mob specific 
+                // projectColumn.querySelector('.project-col__bg-colour').classList.add('project-col__bg-colour--mob-show'); 
+
+            }
+
+            document.querySelector('.bio-section__close-button').classList.add('bio-section__close-button--show');
+
             wrapper.classList.add('open');
             projectColumnContainer.classList.add('project-columns--open');
 
@@ -91,6 +150,7 @@ projectColumnContainer.addEventListener('click', e => {
 
             //mob specific 
             projectColumn.querySelector('.project-col__bg-colour').classList.add('project-col__bg-colour--mob-show'); 
+            projectColumn.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show')
 
         // *********************************************************************
         // this isnt quite correct - does it say if(open && !mediaQ.matches) ??
@@ -106,11 +166,15 @@ projectColumnContainer.addEventListener('click', e => {
             document.querySelector('.bio-section__close-button').classList.add('bio-section__close-button--show');
 
             projectColumn.querySelector('.project-col__bg-colour').classList.add('project-col__bg-colour--mob-show'); 
-
+            projectColumn.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show')
 
             projectColumn.classList.remove('project-col--closed');
             // projectColumn.classList.add('project-col--open');
+            
+            
             projectColumn.classList.remove('project-col--expand');
+
+
             projectColumn.classList.remove('project-col--regular');
             projectColumn.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
             projectColumn.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
@@ -123,14 +187,14 @@ projectColumnContainer.addEventListener('click', e => {
             setTimeout(() => {
                 projectColumn.classList.add('project-col--scroll');
             }, 750);
-wrapper.classList.add('overflowHide');
+            // wrapper.classList.add('overflowHide');
             // delayed so doesn't jump
             setTimeout(() => {
-                
             }, 2750);
         }
     }
 })
+
 // desktop close button
 projectColumns.forEach(col => {
     projectsCloseButtons.forEach(closeButton => {
@@ -138,11 +202,10 @@ projectColumns.forEach(col => {
             const open = col.classList.contains('project-col--open');
             if(open){
                 wrapper.classList.remove('open');
-                wrapper.classList.remove('overflowHide');
+                // wrapper.classList.remove('overflowHide');
                 projectColumnContainer.classList.remove('project-columns--open');
 
                 desktopProjectTitles.forEach(title => title.classList.remove('projects-section__project-title--desk--show'))
-
                 col.querySelector('.project-col__bg-colour').classList.remove('project-col__bg-colour--mob-show'); 
 
                 col.classList.remove('project-col--open');
@@ -151,7 +214,7 @@ projectColumns.forEach(col => {
                 col.scroll({
                     top: 0,
                     behavior: 'smooth'
-                })
+                }, console.log('scroll has been moved to the top'))
                 setTimeout(() => { 
                     col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden');
                 }, 300);
@@ -175,10 +238,11 @@ mobCloseButton.addEventListener('click', e => {
         const open = col.classList.contains('project-col--open');
         if(open){
             wrapper.classList.remove('open');
-            wrapper.classList.remove('overflowHide');
+            // wrapper.classList.remove('overflowHide');
             projectColumnContainer.classList.remove('project-columns--open');
 
             desktopProjectTitles.forEach(title => title.classList.remove('projects-section__project-title--desk--show'))
+            
 
             col.querySelector('.project-col__bg-colour').classList.remove('project-col__bg-colour--mob-show'); 
 
@@ -188,10 +252,14 @@ mobCloseButton.addEventListener('click', e => {
             col.scroll({
                 top: 0,
                 behavior: 'smooth'
-            })
+               
+            }, console.log('scroll has been moved to the top'))
             setTimeout(() => { 
                 col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden');
             }, 300);
+            setTimeout(() => { 
+                col.querySelector('.project-col__project-title--mob').classList.remove('project-col__project-title--mob--show')
+            }, 1000);
 
             projectColumns.forEach(col => {
                 col.classList.remove('project-col--scroll');
@@ -205,3 +273,5 @@ mobCloseButton.addEventListener('click', e => {
 })
 // mobile close button ends
 var mediaQ = window.matchMedia("(min-width: 1000px)") 
+
+
