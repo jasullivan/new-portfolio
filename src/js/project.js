@@ -187,10 +187,10 @@ projectColumnContainer.addEventListener('click', e => {
                 document.querySelector(`[data-project="${e.target.parentElement.getAttribute('data-project')}"]`).classList.add('projects-section__project-title--desk--show')
             }, 600);
             
-            projectColumn.scroll({
-                top: 0,
-                behavior: 'smooth'
-            }, console.log('scroll has been moved to the top'))
+            // projectColumn.scroll({
+            //     top: 0,
+            //     behavior: 'smooth'
+            // }, console.log('scroll has been moved to the top'))
             // console.log(e.target.parentElement.getAttribute('data-project'))
 
             projectColumn.classList.remove('project-col--closed');
@@ -213,6 +213,63 @@ projectColumnContainer.addEventListener('click', e => {
             }, 600);
             setTimeout(() => {
                 projectColumn.classList.add('project-col--scroll');
+            }, 750);
+            // wrapper.classList.add('overflowHide');
+            // delayed so doesn't jump
+            // setTimeout(() => {
+            // }, 2750);
+        }
+    } else {
+        const projectColumn2 = e.target.parentElement.parentElement;
+        const open = projectColumn2.classList.contains('project-col--open');
+        if (!open && !mediaQ.matches){
+            wrapper.classList.add('open');
+            projectColumnContainer.classList.add('project-columns--open');
+
+            projectColumns.forEach(col => (col.classList.remove('project-col--open')));
+            projectColumns.forEach(col => (col.classList.add('project-col--closed')));
+            document.querySelector('.bio-section__close-button').classList.add('bio-section__close-button--show');
+
+            projectColumn2.querySelector('.project-col__bg-colour').classList.add('project-col__bg-colour--mob-show'); 
+            projectColumn2.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show')
+
+            // desktopProjectTitles.forEach(title => {
+            //     console.log(title)
+            //     if(e.target.parentElement.getAttribute('data-project') === title.getAttribute('data-project')) {
+            //          title.classList.add('projects-section__project-title--desk--show')
+            //     }
+            // })
+
+            setTimeout(() => {
+                document.querySelector(`[data-project="${e.target.parentElement.getAttribute('data-project')}"]`).classList.add('projects-section__project-title--desk--show')
+            }, 600);
+            
+            projectColumn2.scroll({
+                top: 0,
+                behavior: 'smooth'
+            }, console.log('scroll has been moved to the top'))
+            // console.log(e.target.parentElement.getAttribute('data-project'))
+
+            projectColumn2.classList.remove('project-col--closed');
+            // projectColumn.classList.add('project-col--open');
+            
+            
+            projectColumn2.querySelector('.project-col__bg-colour').classList.remove('project-col--expand');
+
+
+            projectColumn2.classList.remove('project-col--regular');
+            projectColumn2.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
+            projectColumn2.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
+
+            document.querySelector('.projects-title').classList.add('projects-title--clicked')
+            
+            desktopTitlesAdd(e);
+            
+            setTimeout(() => {
+                projectColumn2.classList.add('project-col--open');
+            }, 600);
+            setTimeout(() => {
+                projectColumn2.classList.add('project-col--scroll');
             }, 750);
             // wrapper.classList.add('overflowHide');
             // delayed so doesn't jump
