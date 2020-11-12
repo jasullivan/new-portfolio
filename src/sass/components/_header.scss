@@ -1,7 +1,7 @@
 header {
     /*position: fixed;*/
     display: none;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     height: 10rem;
     padding: 0 2rem;
@@ -10,11 +10,22 @@ header {
     @include respond(lg) {
         display: flex;
         height: 15rem; 
+
     }
     .projects-title {
         display: none;
         @include respond(lg) {
             display: block; 
+
+            font-size: 5rem;
+            font-weight: 300;
+            line-height: 5rem;
+            &.projects-title--expanded {
+                display: none;
+            }
+            &.projects-title--clicked {
+                display: none;
+            }
         }
     }
 }

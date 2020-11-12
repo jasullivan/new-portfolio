@@ -37,20 +37,27 @@ const desktopTitlesRemove = (e) => {
 const projectExpand = (e) => {
     e.target.parentElement.classList.add('project-col--expand');
     e.target.parentElement.querySelector('.project-col__info-button').classList.remove('project-col__info-button--hidden');
+    // document.querySelector('.projects-section').classList.add('projects-section--expanded')
     desktopTitlesAdd(e);
 }
 const projectContract = (e) => {
     e.target.parentElement.classList.remove('project-col--expand');
     e.target.parentElement.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden');
+    // document.querySelector('.projects-section').classList.remove('projects-section--expanded')
     desktopTitlesRemove(e);
 }
 // hover functions
 const hoverFunctionality = (hoverType) => {
     projectColumnContainer.addEventListener(hoverType, e => {
+
+        hoverType === 'mouseover' 
+            ? e.target.matches('.project-col__bg-colour') && document.querySelector('.projects-title').classList.add('projects-title--expanded')
+            : document.querySelector('.projects-title').classList.remove('projects-title--expanded');
+
         if(e.target.matches('.project-col__bg-colour') && e.target.parentElement.classList.contains('project-col--closed')) {
             hoverType === "mouseover" 
                 ? e.target.parentElement.querySelector('svg').classList.add('openIcon') 
-                : e.target.parentElement.querySelector('svg').classList.remove('openIcon') 
+                : e.target.parentElement.querySelector('svg').classList.remove('openIcon')
         } else if(e.target.matches('.project-col__bg-colour')) { 
             const colsClosed = !e.target.parentElement.classList.contains('project-col--expand') && !e.target.parentElement.classList.contains('project-col--open');
             colsClosed ? projectExpand(e) : projectContract(e);
@@ -67,6 +74,7 @@ projectColumnContainer.addEventListener('click', e => {
         const projectColumn = e.target.parentElement;
         const open = projectColumn.classList.contains('project-col--open');
         const closed = projectColumn.classList.contains('project-col--closed');
+        // const desktopProjectTitles = document.querySelectorAll('.projects-section__project-title--desk');
 
         // *********************************************************************
         // this isnt quite correct - does it say if(!open && mediaQ.matches) ??
@@ -80,8 +88,12 @@ projectColumnContainer.addEventListener('click', e => {
             
             // a column is open and remaining columns are closed but are now visible and can be clicked
             if(closed) {
-                var paragraph = e.target.querySelector('.para');
-                paragraph ? paragraph.remove() : console.log('no para yet');
+
+                // don't need this
+                // var paragraph = e.target.querySelector('.para');
+                // paragraph ? paragraph.remove() : console.log('no para yet');
+
+
                 wrapper.classList.add('open');
                 projectColumnContainer.classList.add('project-columns--open');
 
@@ -118,6 +130,8 @@ projectColumnContainer.addEventListener('click', e => {
 
             }
 
+            document.querySelector('.projects-title').classList.add('projects-title--clicked')
+            
             document.querySelector('.bio-section__close-button').classList.add('bio-section__close-button--show');
 
             wrapper.classList.add('open');
@@ -140,6 +154,9 @@ projectColumnContainer.addEventListener('click', e => {
             }, 750);
 
             //mob specific 
+            projectColumns.forEach(col => (col.querySelector('.project-col__bg-colour').classList.remove('project-col__bg-colour--mob-show')));
+
+            // these arent working
             projectColumn.querySelector('.project-col__bg-colour').classList.add('project-col__bg-colour--mob-show'); 
             projectColumn.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show')
 
@@ -159,16 +176,35 @@ projectColumnContainer.addEventListener('click', e => {
             projectColumn.querySelector('.project-col__bg-colour').classList.add('project-col__bg-colour--mob-show'); 
             projectColumn.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show')
 
+            // desktopProjectTitles.forEach(title => {
+            //     console.log(title)
+            //     if(e.target.parentElement.getAttribute('data-project') === title.getAttribute('data-project')) {
+            //          title.classList.add('projects-section__project-title--desk--show')
+            //     }
+            // })
+
+            setTimeout(() => {
+                document.querySelector(`[data-project="${e.target.parentElement.getAttribute('data-project')}"]`).classList.add('projects-section__project-title--desk--show')
+            }, 600);
+            
+            projectColumn.scroll({
+                top: 0,
+                behavior: 'smooth'
+            }, console.log('scroll has been moved to the top'))
+            // console.log(e.target.parentElement.getAttribute('data-project'))
+
             projectColumn.classList.remove('project-col--closed');
             // projectColumn.classList.add('project-col--open');
             
             
-            projectColumn.classList.remove('project-col--expand');
+            projectColumn.querySelector('.project-col__bg-colour').classList.remove('project-col--expand');
 
 
             projectColumn.classList.remove('project-col--regular');
             projectColumn.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
             projectColumn.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
+
+            document.querySelector('.projects-title').classList.add('projects-title--clicked')
             
             desktopTitlesAdd(e);
             
@@ -180,8 +216,8 @@ projectColumnContainer.addEventListener('click', e => {
             }, 750);
             // wrapper.classList.add('overflowHide');
             // delayed so doesn't jump
-            setTimeout(() => {
-            }, 2750);
+            // setTimeout(() => {
+            // }, 2750);
         }
     }
 })
@@ -195,6 +231,8 @@ projectColumns.forEach(col => {
                 wrapper.classList.remove('open');
                 // wrapper.classList.remove('overflowHide');
                 projectColumnContainer.classList.remove('project-columns--open');
+
+                document.querySelector('.projects-title').classList.remove('projects-title--clicked')
 
                 desktopProjectTitles.forEach(title => title.classList.remove('projects-section__project-title--desk--show'))
                 col.querySelector('.project-col__bg-colour').classList.remove('project-col__bg-colour--mob-show'); 
@@ -232,6 +270,8 @@ mobCloseButton.addEventListener('click', e => {
             // wrapper.classList.remove('overflowHide');
             projectColumnContainer.classList.remove('project-columns--open');
 
+            document.querySelector('.projects-title').classList.remove('projects-title--clicked')
+            
             desktopProjectTitles.forEach(title => title.classList.remove('projects-section__project-title--desk--show'))
             
 

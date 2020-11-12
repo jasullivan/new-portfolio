@@ -1,7 +1,9 @@
 /* bio-section */
 .bio-section {
     display: flex;
-    background: #F7F7F7;
+    /*background: #F7F7F7;
+    background: #F2C745;*/
+    background: #fff;
     z-index: 5;
     width: 100%;
     justify-content: space-between;
@@ -24,16 +26,24 @@
         align-items: center;
         height: 10rem;
         @include respond(lg) {
-            height: 15rem;
+            /*height: 15rem;*/
+            height: 25rem;
         }
         h1 {
-            padding: 10px 10px 5px;
+            padding: 0px 20px 0px;
+
+            font-size: 4rem;
+            font-weight: 400;
+            line-height: 5rem;
             @include respond(lg) {
-                padding: 20px;
+                padding: 0px 20px 30px;
+
+                font-size: 6rem;
+                line-height: 7rem;
             }
         }
         h2 {
-            padding: 0px 10px 5px;
+            padding: 0px 10px;
             @include respond(lg) {
                 padding: 20px;
             }
@@ -41,6 +51,9 @@
     }
     &__mob-subtitle {
         display: block;
+        font-size: 4rem;
+        font-weight: 300;
+        line-height: 5rem;
         @include respond(lg) {
             display: none;
         }
