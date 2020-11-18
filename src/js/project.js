@@ -16,9 +16,14 @@ const desktopTitlesAdd = (e) => {
             desktopProjectTitles.forEach(title => (title.classList.remove('projects-section__project-title--desk--show')));
             title.classList.add('projects-section__project-title--desk--show');
 
+            // setTimeout(() => {
+                e.target.parentElement.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show');
+            // }, 200);
+
             setTimeout(() => {
                 e.target.parentElement.classList.contains('project-col--open') && 
                 title.querySelector('.projects-section__close-button').classList.add('projects-section__close-button--show');
+                
             }, 2000);
             
         }
@@ -30,13 +35,20 @@ const desktopTitlesRemove = (e) => {
             !e.target.parentElement.classList.contains('project-col--open')) {
             desktopProjectTitles.forEach(title => (title.classList.remove('projects-section__project-title--desk--show')));
             title.classList.remove('projects-section__project-title--desk--show');
+
+            // console.log(e.target, ' exit')
+
+            e.target.parentElement.querySelector('.project-col__project-title--mob').classList.remove('project-col__project-title--mob--show');
         }
     })
 }
 // expand and contract project columns
 const projectExpand = (e) => {
     e.target.parentElement.classList.add('project-col--expand');
-    e.target.parentElement.querySelector('.project-col__info-button').classList.remove('project-col__info-button--hidden');
+    // setTimeout(() => {
+        e.target.parentElement.querySelector('.project-col__info-button').classList.remove('project-col__info-button--hidden');
+    // }, 200);
+    
     // document.querySelector('.projects-section').classList.add('projects-section--expanded')
     desktopTitlesAdd(e);
 }
@@ -50,17 +62,29 @@ const projectContract = (e) => {
 const hoverFunctionality = (hoverType) => {
     projectColumnContainer.addEventListener(hoverType, e => {
 
-        hoverType === 'mouseover' 
-            ? e.target.matches('.project-col__bg-colour') && document.querySelector('.projects-title').classList.add('projects-title--expanded')
-            : document.querySelector('.projects-title').classList.remove('projects-title--expanded');
+        //if removing PROJECTS as a title might not
+        // need this first conditional statement
+        // hoverType === 'mouseover' 
+        //     ? e.target.matches('.project-col__bg-colour') && document.querySelector('.projects-title').classList.add('projects-title--expanded')
+        //     : document.querySelector('.projects-title').classList.remove('projects-title--expanded');
+
+            // ? console.log('add expand') : console.log('remove expand')
+
+        //if removing PROJECTS as a title might not
+        // need this first conditional statement ends
 
         if(e.target.matches('.project-col__bg-colour') && e.target.parentElement.classList.contains('project-col--closed')) {
             hoverType === "mouseover" 
                 ? e.target.parentElement.querySelector('svg').classList.add('openIcon') 
                 : e.target.parentElement.querySelector('svg').classList.remove('openIcon')
+
+                // ? console.log('add icon') : console.log('remove icon')
+
         } else if(e.target.matches('.project-col__bg-colour')) { 
             const colsClosed = !e.target.parentElement.classList.contains('project-col--expand') && !e.target.parentElement.classList.contains('project-col--open');
             colsClosed ? projectExpand(e) : projectContract(e);
+
+            // colsClosed ? console.log('add projectExpand') : console.log('remove projectExpand')
         }
     })
 }
@@ -99,7 +123,10 @@ projectColumnContainer.addEventListener('click', e => {
 
                 // projectColumns.forEach(col => (col.classList.remove('project-col--open')));
                 projectColumns.forEach(col => (col.classList.remove('project-col--scroll')));
-                projectColumns.forEach(col => (col.classList.add('project-col--regular')));
+                projectColumns.forEach(col => {
+                    col.classList.add('project-col--regular');
+                    col.querySelector('.project-col__project-title--mob').classList.remove('project-col__project-title--mob--show');
+                });
                 projectColumns.forEach(col => {
                     // col.classList.add('project-col--closed');
                     col.scroll({
@@ -130,7 +157,9 @@ projectColumnContainer.addEventListener('click', e => {
 
             }
 
-            document.querySelector('.projects-title').classList.add('projects-title--clicked')
+            // might not need this
+            // document.querySelector('.projects-title').classList.add('projects-title--clicked')
+            // might not need this
             
             document.querySelector('.bio-section__close-button').classList.add('bio-section__close-button--show');
 
@@ -151,6 +180,7 @@ projectColumnContainer.addEventListener('click', e => {
 
             setTimeout(() => {
                 projectColumn.classList.add('project-col--scroll');
+                projectColumn.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show')
             }, 750);
 
             //mob specific 
@@ -158,7 +188,7 @@ projectColumnContainer.addEventListener('click', e => {
 
             // these arent working
             projectColumn.querySelector('.project-col__bg-colour').classList.add('project-col__bg-colour--mob-show'); 
-            projectColumn.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show')
+            
 
         // *********************************************************************
         // this isnt quite correct - does it say if(open && !mediaQ.matches) ??
@@ -204,7 +234,9 @@ projectColumnContainer.addEventListener('click', e => {
             projectColumn.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
             projectColumn.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
 
-            document.querySelector('.projects-title').classList.add('projects-title--clicked')
+            // might not need this
+            // document.querySelector('.projects-title').classList.add('projects-title--clicked')
+            // might not need this
             
             desktopTitlesAdd(e);
             
@@ -261,7 +293,9 @@ projectColumnContainer.addEventListener('click', e => {
             projectColumn2.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
             projectColumn2.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
 
-            document.querySelector('.projects-title').classList.add('projects-title--clicked')
+            // might not need this
+            // document.querySelector('.projects-title').classList.add('projects-title--clicked')
+            // might not need this
             
             desktopTitlesAdd(e);
             
@@ -289,10 +323,13 @@ projectColumns.forEach(col => {
                 // wrapper.classList.remove('overflowHide');
                 projectColumnContainer.classList.remove('project-columns--open');
 
-                document.querySelector('.projects-title').classList.remove('projects-title--clicked')
+                // might not need this
+                // document.querySelector('.projects-title').classList.remove('projects-title--clicked')
+                // might not need this
 
                 desktopProjectTitles.forEach(title => title.classList.remove('projects-section__project-title--desk--show'))
                 col.querySelector('.project-col__bg-colour').classList.remove('project-col__bg-colour--mob-show'); 
+                col.querySelector('.project-col__project-title--mob').classList.remove('project-col__project-title--mob--show')
 
                 col.classList.remove('project-col--open');
                 // col.style.height = ""
@@ -327,7 +364,9 @@ mobCloseButton.addEventListener('click', e => {
             // wrapper.classList.remove('overflowHide');
             projectColumnContainer.classList.remove('project-columns--open');
 
-            document.querySelector('.projects-title').classList.remove('projects-title--clicked')
+            // might not need this
+            // document.querySelector('.projects-title').classList.remove('projects-title--clicked')
+            // might not need this
             
             desktopProjectTitles.forEach(title => title.classList.remove('projects-section__project-title--desk--show'))
             
