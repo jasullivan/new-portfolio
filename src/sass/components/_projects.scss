@@ -54,7 +54,7 @@
 }
 @keyframes closeBgCol { 
     0% { 
-        height: 10rem;
+        height: 0;
         opacity: 1;
         
     }
@@ -213,7 +213,7 @@
     }
 }
 .project-col .project-col__bg, .project-col .project-col__content,
-.project-col .project-col__svg, .project-col .project-col__info-button, .project-col__project-title--mob {
+.project-col .project-col__svg, .project-col .project-col__info-button, .project-col__project-title--mob, .project-col__bg-colour--mob-show {
     pointer-events: none;
 }
 .project-col {
@@ -241,11 +241,11 @@
 
         /*transition: flex-basis 0.5s 0.15s, flex-grow 0.5s 0.15s;
          for safari */
-        transition: all 0.6s 0.15s;
+        transition: all 0.4s 0.15s;
         &:hover {
             /*transition: flex-basis 0.5s 0.15s, flex-grow 0.5s 0.15s;
              for safari */
-            transition: all 0.6s 0.15s;
+            transition: all 0.4s 0.15s;
         }
     }
     &__project-title--mob {
@@ -257,16 +257,29 @@
         left: 10px;
         color: #fff;
         z-index: 4;
-        transition: opacity 0.5s ease-in;
         @include respond(lg) {
-            opacity: 0;
+            display: none;
             &--show {
-                opacity: 1;
+                display: block;
             }
         }
         /*&--show {
             z-index: 4;
         }*/
+    }
+    &__close-button {
+        display: none;
+        @include respond(lg) {
+            position: absolute;
+            color: #fff;
+            z-index: 72;
+            
+            width: 200px;
+            background: green;
+            &--show {
+                display: block;
+            }
+        }
     }
     /*&__project-title--mob {
         display: flex;
@@ -334,7 +347,6 @@
     &__info-button {
         left: 30px;
         color: #fff;
-        transition: opacity 0.5s ease-in;
     }
     &__bg-colour {
         height: 10rem;
@@ -508,7 +520,6 @@
         top: 0;
         z-index: 5;
         margin: 10px;
-        transition: opacity 0.5s ease-in;
     }
 }
 .project-col__info-button {
@@ -611,7 +622,7 @@
     padding-top: 9rem;
     /*top: 5vh;*/
     animation-name: openContent; 
-    animation-duration: 0.2s; 
+    animation-duration: 0.5s; 
     animation-fill-mode: forwards; 
     animation-delay: 0s; 
     animation-timing-function: linear;

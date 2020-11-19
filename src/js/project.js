@@ -126,6 +126,7 @@ projectColumnContainer.addEventListener('click', e => {
                 projectColumns.forEach(col => {
                     col.classList.add('project-col--regular');
                     col.querySelector('.project-col__project-title--mob').classList.remove('project-col__project-title--mob--show');
+                    col.querySelector('.project-col__close-button').classList.remove('project-col__close-button--show');
                 });
                 projectColumns.forEach(col => {
                     // col.classList.add('project-col--closed');
@@ -175,6 +176,8 @@ projectColumnContainer.addEventListener('click', e => {
             projectColumn.classList.remove('project-col--regular');
             projectColumn.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
             projectColumn.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
+
+            e.target.parentElement.querySelector('.project-col__close-button').classList.add('project-col__close-button--show');
             
             desktopTitlesAdd(e);
 
@@ -200,11 +203,13 @@ projectColumnContainer.addEventListener('click', e => {
             projectColumnContainer.classList.add('project-columns--open');
 
             projectColumns.forEach(col => (col.classList.remove('project-col--open')));
-            projectColumns.forEach(col => (col.classList.add('project-col--closed')));
+            projectColumns.forEach(col => {
+                col.classList.add('project-col--closed');
+            });
             document.querySelector('.bio-section__close-button').classList.add('bio-section__close-button--show');
 
-            projectColumn.querySelector('.project-col__bg-colour').classList.add('project-col__bg-colour--mob-show'); 
-            projectColumn.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show')
+            
+            
 
             // desktopProjectTitles.forEach(title => {
             //     console.log(title)
@@ -212,9 +217,12 @@ projectColumnContainer.addEventListener('click', e => {
             //          title.classList.add('projects-section__project-title--desk--show')
             //     }
             // })
+            e.target.parentElement.querySelector('.project-col__close-button').classList.add('project-col__close-button--show');
 
             setTimeout(() => {
-                document.querySelector(`[data-project="${e.target.parentElement.getAttribute('data-project')}"]`).classList.add('projects-section__project-title--desk--show')
+                document.querySelector(`[data-project="${e.target.parentElement.getAttribute('data-project')}"]`).classList.add('projects-section__project-title--desk--show');
+                projectColumn.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show');
+                projectColumn.querySelector('.project-col__bg-colour').classList.add('project-col__bg-colour--mob-show'); 
             }, 600);
             
             // projectColumn.scroll({
@@ -251,19 +259,21 @@ projectColumnContainer.addEventListener('click', e => {
             // setTimeout(() => {
             // }, 2750);
         }
-    } else {
-        const projectColumn2 = e.target.parentElement.parentElement;
-        const open = projectColumn2.classList.contains('project-col--open');
-        if (!open && !mediaQ.matches){
-            wrapper.classList.add('open');
-            projectColumnContainer.classList.add('project-columns--open');
+    } 
+    // else {
+    //     console.log('else is engged')
+    //     const projectColumn2 = e.target.parentElement.parentElement;
+    //     const open = projectColumn2.classList.contains('project-col--open');
+    //     if (!open && !mediaQ.matches){
+    //         wrapper.classList.add('open');
+    //         projectColumnContainer.classList.add('project-columns--open');
 
-            projectColumns.forEach(col => (col.classList.remove('project-col--open')));
-            projectColumns.forEach(col => (col.classList.add('project-col--closed')));
-            document.querySelector('.bio-section__close-button').classList.add('bio-section__close-button--show');
+    //         projectColumns.forEach(col => (col.classList.remove('project-col--open')));
+    //         projectColumns.forEach(col => (col.classList.add('project-col--closed')));
+    //         document.querySelector('.bio-section__close-button').classList.add('bio-section__close-button--show');
 
-            projectColumn2.querySelector('.project-col__bg-colour').classList.add('project-col__bg-colour--mob-show'); 
-            projectColumn2.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show')
+    //         projectColumn2.querySelector('.project-col__bg-colour').classList.add('project-col__bg-colour--mob-show'); 
+    //         projectColumn2.querySelector('.project-col__project-title--mob').classList.add('project-col__project-title--mob--show')
 
             // desktopProjectTitles.forEach(title => {
             //     console.log(title)
@@ -272,87 +282,43 @@ projectColumnContainer.addEventListener('click', e => {
             //     }
             // })
 
-            setTimeout(() => {
-                document.querySelector(`[data-project="${e.target.parentElement.getAttribute('data-project')}"]`).classList.add('projects-section__project-title--desk--show')
-            }, 600);
+        //     setTimeout(() => {
+        //         document.querySelector(`[data-project="${e.target.parentElement.getAttribute('data-project')}"]`).classList.add('projects-section__project-title--desk--show')
+        //     }, 600);
             
-            projectColumn2.scroll({
-                top: 0,
-                behavior: 'smooth'
-            }, console.log('scroll has been moved to the top'))
-            // console.log(e.target.parentElement.getAttribute('data-project'))
+        //     projectColumn2.scroll({
+        //         top: 0,
+        //         behavior: 'smooth'
+        //     }, console.log('scroll has been moved to the top'))
 
-            projectColumn2.classList.remove('project-col--closed');
-            // projectColumn.classList.add('project-col--open');
+        //     projectColumn2.classList.remove('project-col--closed');
             
             
-            projectColumn2.querySelector('.project-col__bg-colour').classList.remove('project-col--expand');
+        //     projectColumn2.querySelector('.project-col__bg-colour').classList.remove('project-col--expand');
 
 
-            projectColumn2.classList.remove('project-col--regular');
-            projectColumn2.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
-            projectColumn2.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
+        //     projectColumn2.classList.remove('project-col--regular');
+        //     projectColumn2.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
+        //     projectColumn2.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
 
-            // might not need this
-            // document.querySelector('.projects-title').classList.add('projects-title--clicked')
-            // might not need this
+        //     // might not need this
+        //     // document.querySelector('.projects-title').classList.add('projects-title--clicked')
+        //     // might not need this
             
-            desktopTitlesAdd(e);
+        //     desktopTitlesAdd(e);
             
-            setTimeout(() => {
-                projectColumn2.classList.add('project-col--open');
-            }, 600);
-            setTimeout(() => {
-                projectColumn2.classList.add('project-col--scroll');
-            }, 750);
-            // wrapper.classList.add('overflowHide');
-            // delayed so doesn't jump
-            // setTimeout(() => {
-            // }, 2750);
-        }
-    }
+        //     setTimeout(() => {
+        //         projectColumn2.classList.add('project-col--open');
+        //     }, 600);
+        //     setTimeout(() => {
+        //         projectColumn2.classList.add('project-col--scroll');
+        //     }, 750);
+        // }
+    // }
 })
 
 // desktop close button
-projectColumns.forEach(col => {
-    projectsCloseButtons.forEach(closeButton => {
-        closeButton.addEventListener('click', e => {
-            const open = col.classList.contains('project-col--open');
-            if(open){
-                wrapper.classList.remove('open');
-                // wrapper.classList.remove('overflowHide');
-                projectColumnContainer.classList.remove('project-columns--open');
 
-                // might not need this
-                // document.querySelector('.projects-title').classList.remove('projects-title--clicked')
-                // might not need this
-
-                desktopProjectTitles.forEach(title => title.classList.remove('projects-section__project-title--desk--show'))
-                col.querySelector('.project-col__bg-colour').classList.remove('project-col__bg-colour--mob-show'); 
-                col.querySelector('.project-col__project-title--mob').classList.remove('project-col__project-title--mob--show')
-
-                col.classList.remove('project-col--open');
-                // col.style.height = ""
-                col.classList.add('project-col--regular');
-                col.scroll({
-                    top: 0,
-                    behavior: 'smooth'
-                }, console.log('scroll has been moved to the top'))
-                setTimeout(() => { 
-                    col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden');
-                }, 300);
-
-                projectColumns.forEach(col => {
-                    col.classList.remove('project-col--scroll');
-                    col.classList.remove('project-col--open');
-                    col.classList.remove('project-col--closed');
-                });
-                
-                closeButton.classList.remove('projects-section__close-button--show');
-            } 
-        })
-    })
-})
 // desktop close button ends
 // mobile close button
 mobCloseButton.addEventListener('click', e => {
@@ -363,7 +329,9 @@ mobCloseButton.addEventListener('click', e => {
             wrapper.classList.remove('open');
             // wrapper.classList.remove('overflowHide');
             projectColumnContainer.classList.remove('project-columns--open');
-
+            closeButtons.forEach(closeButton => {
+                closeButton.classList.remove('project-col__close-button--show');
+            })
             // might not need this
             // document.querySelector('.projects-title').classList.remove('projects-title--clicked')
             // might not need this
