@@ -103,11 +103,14 @@
         padding-top: 0;
         position: fixed;
         overflow: visible;
-        width: calc(100% - 30rem);
+        width: calc(100% - 40rem);
         right: 0;
         height: 100%;
         top: 0;
         bottom: 0;
+
+        display: flex;
+        align-items: center;
     }
     &__project-title--desk {
         text-align: right;
@@ -164,17 +167,17 @@
     }*/
 }
 .project-columns {
-    padding: 0 1rem 2rem;
+    padding: 0 2rem 0rem 1rem;
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
     /*transform: translateY(11rem);*/
     transform: translateY(10rem);
     transition: transform 1s;
     @include respond(lg) {
         flex-direction: row;
-        height: calc(100vh - 150px);
+        height: calc(100vh - 120px);
         width: 100%;
         transform: translateY(0);
     }
@@ -206,9 +209,9 @@
         @include respond(lg) {
             transform: translateY(0rem);
             position: static;
-            height: calc(100vh - 150px);
+            height: calc(100vh - 120px);
             top: auto;
-            padding-bottom: 2rem;
+            /*padding-bottom: 2rem;*/
         }
     }
 }
@@ -234,7 +237,7 @@
         otherwise the responsiveness is lost at an earlier screen width because of 
         the default min width and min height */
         flex: 1 0 75px;
-        margin: 0 1rem;
+        margin: 0 0.5rem;
         min-height: 0;
         height: auto;
 

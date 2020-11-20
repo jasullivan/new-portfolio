@@ -8,7 +8,7 @@ header {
     position: relative;
     z-index: 3;
     @include respond(lg) {
-        display: flex;
+        /* display: flex;*/
         height: 15rem; 
 
     }
