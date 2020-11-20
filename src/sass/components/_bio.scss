@@ -14,38 +14,44 @@
         /*display: block;
         position: fixed;*/
         left: 0px;
-        top: 0px;
-        /*right: 552px;*/
-        width: 40rem;
-        height: 100%;
-        bottom: 0px;
+        top: 60px;
+        height: auto;
+        width: 35rem;
+        bottom: 60px;
         flex-direction: column;
     }
     &__title {
         display: flex;
         align-items: center;
-        height: 10rem;
         @include respond(lg) {
-            /*height: 15rem;*/
-            height: 25rem;
+            flex-direction: column;
+            align-items: start;
+            padding: 0 20px 30px;
+        }
+        img {
+            display: none;
+            @include respond(lg) {
+                display: block;
+                width: 50%;
+            }
         }
         h1 {
-            padding: 0px 20px 0px;
-
             font-size: 4rem;
             font-weight: 300;
             line-height: 5rem;
             @include respond(lg) {
-                padding: 0px 20px 30px;
-
-                font-size: 6rem;
-                line-height: 7rem;
+                margin-top: 2rem;
+                font-size: 8rem;
+                line-height: 8.5rem;
             }
         }
         h2 {
-            padding: 0px 10px;
+            color: #9e0059;
+            font-weight: 500;
+            font-family: Raleway,sans-serif;
             @include respond(lg) {
-                padding: 20px;
+                font-size: 2.5rem;
+                line-height: 4.5rem;
             }
         }
     }
@@ -59,19 +65,18 @@
         }
     }
     &__close-button {
-        /*transform: translateY(22px);*/
-        opacity: 0;
+        /*transform: translateY(22px);
+        opacity: 0;*/
         cursor: pointer;
         /*transition: opacity 0.75s ease-in;*/
         display: none;
         &--show {
-            opacity: 1;
             display: block;
+            @include respond(lg) {
+                display: none;
+            }
         }
-        @include respond(lg) {
-            opacity: 0;
-            display: none;
-        }
+        
     }
     &__info {
         height: 0;
@@ -79,7 +84,7 @@
         opacity: 0;
         display: none;
         @include respond(lg) {
-            padding: 20px;
+            padding: 0 20px 30px;
             display: block;
             height: auto;
             font-size: initial;
@@ -92,7 +97,7 @@
         display: flex;
         align-items: center;
         @include respond(lg) {
-            display: block;
+            flex-direction: row;
         }
     }
     /* when projects expanded */
