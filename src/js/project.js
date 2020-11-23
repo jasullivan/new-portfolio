@@ -75,8 +75,8 @@ const hoverFunctionality = (hoverType) => {
 
         if(e.target.matches('.project-col__bg-colour') && e.target.parentElement.classList.contains('project-col--closed')) {
             hoverType === "mouseover" 
-                ? e.target.parentElement.querySelector('svg').classList.add('openIcon') 
-                : e.target.parentElement.querySelector('svg').classList.remove('openIcon')
+                ? e.target.parentElement.querySelector('.project-col__svg').classList.add('openIcon') 
+                : e.target.parentElement.querySelector('.project-col__svg').classList.remove('openIcon')
 
                 // ? console.log('add icon') : console.log('remove icon')
 
@@ -135,8 +135,8 @@ projectColumnContainer.addEventListener('click', e => {
                         behavior: 'smooth'
                     });
                 });
-                projectColumns.forEach(col => (col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden')));
-                e.target.parentElement.querySelector('svg').classList.remove('openIcon') 
+                projectColumns.forEach(col => (col.querySelector('.project-col__svg').classList.add('project-col__svg--hold')));
+                e.target.parentElement.querySelector('.project-col__svg').classList.remove('openIcon') 
                 // projectColumns.forEach(col => (col.querySelector('.project-col__bg-colour').classList.remove('project-col__bg-colour--mob-show')));
 
                 
@@ -177,6 +177,7 @@ projectColumnContainer.addEventListener('click', e => {
             projectColumn.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
             projectColumn.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
 
+            e.target.parentElement.querySelector('.project-col__svg').classList.remove('project-col__svg--hold');
             e.target.parentElement.querySelector('.project-col__close-button').classList.add('project-col__close-button--show');
             
             desktopTitlesAdd(e);
@@ -217,6 +218,7 @@ projectColumnContainer.addEventListener('click', e => {
             //          title.classList.add('projects-section__project-title--desk--show')
             //     }
             // })
+            e.target.parentElement.querySelector('.project-col__svg').classList.remove('project-col__svg--hold');
             e.target.parentElement.querySelector('.project-col__close-button').classList.add('project-col__close-button--show');
 
             setTimeout(() => {
@@ -368,5 +370,4 @@ mobCloseButton.addEventListener('click', e => {
 })
 // mobile close button ends
 var mediaQ = window.matchMedia("(min-width: 1000px)") 
-
 

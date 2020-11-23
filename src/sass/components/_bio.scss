@@ -7,12 +7,14 @@
     z-index: 5;
     width: 100%;
     justify-content: space-between;
-    position: fixed;
+    position: absolute;
     top: 0;
-    height: 10rem;
+    height: 14rem;
+    align-items: left;
+    flex-direction: column;
     @include respond(lg) {
-        /*display: block;
-        position: fixed;*/
+        /*display: block;*/
+        position: fixed;
         left: 0px;
         top: 60px;
         height: auto;
@@ -20,13 +22,15 @@
         bottom: 60px;
         flex-direction: column;
     }
+    &__content {
+        padding-left: 2.5rem;
+    }
     &__title {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        flex-direction: column;
         @include respond(lg) {
-            flex-direction: column;
-            align-items: start;
-            padding: 0 20px 30px;
+            padding: 0 0px 30px;
         }
         img {
             display: none;
@@ -84,7 +88,7 @@
         opacity: 0;
         display: none;
         @include respond(lg) {
-            padding: 0 20px 30px;
+            padding: 0 0px 30px;
             display: block;
             height: auto;
             font-size: initial;
@@ -93,7 +97,7 @@
         }
     }
     &__contacts {
-        padding: 20px;
+        padding-left: 2.5rem;
         display: flex;
         align-items: center;
         @include respond(lg) {
