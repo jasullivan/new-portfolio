@@ -5,7 +5,7 @@ closeButtons.forEach(closeButton => {
     // console.log(closeButton)
     closeButton.addEventListener('click', e => {
         // if(e.target.matches('.project-col__close-button img')) {
-            console.log(e.target, ' e.target')
+            // console.log(e.target, ' e.target')
             e.target.parentElement.querySelector('.project-col__close-button').classList.remove('project-col__close-button--show');
 
             wrapper.classList.remove('open');
@@ -35,3 +35,15 @@ closeButtons.forEach(closeButton => {
         // }
     })
 })
+
+
+// test for scroll opne on mob
+// document.addEventListener('scroll', event => {
+//     console.log(window.scrollY)
+//   })
+// function myFunction() {
+//     var testDiv = document.querySelector('.project-col[data-project]');
+//     console.log(testDiv.offsetTop, ' testDiv.offsetTop');
+// }
+// myFunction();
+

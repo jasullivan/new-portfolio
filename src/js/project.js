@@ -209,8 +209,61 @@ projectColumnContainer.addEventListener('click', e => {
             });
             document.querySelector('.bio-section__close-button').classList.add('bio-section__close-button--show');
 
+            // const button = document.querySelector('button')
+            // button.addEventListener('click', event => {
+            // window.scroll({
+            //     top: 0,
+            //     behavior: 'smooth'
+            // })
+            // })
+            // let scrollYAmount = window.scrollY;
+
+            // window.scrollTo({
+            //     top: 0,
+            //     behavior: 'smooth' 
+            // });
+
+            // Set a variable for our button element.
+           
+            // *******************************
+            // **********Scroll on mob **********
+            // *******************************
+            const scrollToTop = () => {
+                // Let's set a variable for the number of pixels we are from the top of the document.
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                 
+                // If that number is greater than 0, we'll scroll back to 0, or the top of the document.
+                // We'll also animate that scroll with requestAnimationFrame:
+                // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+                if (c > 0) {
+                  window.requestAnimationFrame(scrollToTop);
+                  // ScrollTo takes an x and a y coordinate.
+                  // Increase the '10' value to get a smoother/slower scroll!
+                  window.scrollTo(0, c - c / 10);
+                }
+            };
+
+            // When the button is clicked, run our ScrolltoTop function above!
+            // scrollToTopButton.onclick = function(e) {
+                e.preventDefault();
+                scrollToTop();
+            // }
+            // *******************************
+            // **********Scroll on mob **********
+            // *******************************
+
+
+
             
-            
+            // window.scrollTo(0, 0)
+            // console.log(window.scrollY, ' y scroll');
+            // console.log(scrollYAmount, ' scrollYAmount')
+
+            // scrollYAmount === 0 
+            //     ? document.querySelector('.project-columns').style.transform = 'translateY(140px)' 
+            //     : document.querySelector('.project-columns').style.transform = `translateY(${scrollYAmount}px)`;
+
+            // document.querySelector('.project-columns').style.transform = 'translateY(1240px)';
 
             // desktopProjectTitles.forEach(title => {
             //     console.log(title)
