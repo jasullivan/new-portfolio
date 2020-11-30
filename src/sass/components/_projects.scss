@@ -70,7 +70,7 @@
 @keyframes openContent { 
     0% { 
         opacity: 0;
-        top: 85vh; 
+        top: 45vh; 
     }
     100% { 
         opacity: 1;
@@ -175,7 +175,7 @@
     width: 100%;
     margin-bottom: 0rem;
     /*transform: translateY(11rem);*/
-    transform: translateY(14rem);
+    transform: translateY(10rem);
     transition: transform 1s;
     @include respond(lg) {
         flex-direction: row;
@@ -201,7 +201,7 @@
 
         height: 100%;
         
-        transform: translateY(14rem);
+        transform: translateY(10rem);
         /*padding: 0;*/
 
         /*height: 85vh;
@@ -348,8 +348,11 @@
         height: 0;
         opacity: 0;
         /*transition: opacity 0.1s ease-in, margin 0.5s 0.5s, height 0.5s 0.5s;
-        for safari */
+        for safari 
         transition: all 0.4s 0.15s;
+        transition: opacity 0.1s, margin 0.75s, height 1s 0.15s;
+        transition: opacity 0.1s, margin 0.3s, height 0.3s;*/
+        transition: margin 0.75s, height 0.75s;
 
         @include respond(lg) {
             opacity: 1;
@@ -357,6 +360,7 @@
             /*flex: 1 0 0px;*/
             flex: 1 0 10px;
             margin: 0;
+            transition: all 0.4s 0.15s
         }
     }
     &__info-button {
@@ -508,7 +512,8 @@
         font-size: 0;
         
         opacity: 0;
-        top: 85vh;
+        /*top: 85vh;*/
+        top: 45vh;
 
         /*TRANSITION*/
         /*transition: height 13.15s;
@@ -631,7 +636,7 @@
     padding-top: 13rem;
     /*top: 5vh;*/
     animation-name: openContent; 
-    animation-duration: 0.5s; 
+    animation-duration: 0.15s; 
     animation-fill-mode: forwards; 
     animation-delay: 0s; 
     animation-timing-function: linear;

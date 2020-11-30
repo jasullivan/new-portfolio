@@ -228,30 +228,23 @@ projectColumnContainer.addEventListener('click', e => {
             // *******************************
             // **********Scroll on mob **********
             // *******************************
-            const scrollToTop = () => {
-                // Let's set a variable for the number of pixels we are from the top of the document.
-                const c = document.documentElement.scrollTop || document.body.scrollTop;
-                 
-                // If that number is greater than 0, we'll scroll back to 0, or the top of the document.
-                // We'll also animate that scroll with requestAnimationFrame:
-                // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
-                if (c > 0) {
-                  window.requestAnimationFrame(scrollToTop);
-                  // ScrollTo takes an x and a y coordinate.
-                  // Increase the '10' value to get a smoother/slower scroll!
-                  window.scrollTo(0, c - c / 10);
-                }
-            };
-
-            // When the button is clicked, run our ScrolltoTop function above!
-            // scrollToTopButton.onclick = function(e) {
-                e.preventDefault();
-                scrollToTop();
+            // setTimeout(() => {
+            //     const scrollToTop = () => {
+            //         const c = document.documentElement.scrollTop || document.body.scrollTop;
+            //         console.log(document.documentElement.scrollTop, ' document.documentElement.scrollTop')
+            //         if (c > 0) {
+            //         window.requestAnimationFrame(scrollToTop);
+            //         window.scrollTo(0, c - c / 30);
+            //         }
+            //     };
+            //         e.preventDefault();
+            //         scrollToTop();
+            // }, 100);
+            window.scroll({ top: 0, left: 0, behavior: 'smooth' });
             // }
             // *******************************
             // **********Scroll on mob **********
             // *******************************
-
 
 
             

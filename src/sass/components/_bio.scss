@@ -6,12 +6,12 @@
     background: #fff;
     z-index: 5;
     width: 100%;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     position: absolute;
     top: 0;
-    height: 14rem;
+    height: 10rem;
     align-items: left;
-    flex-direction: column;
+    flex-direction: row;
     @include respond(lg) {
         /*display: block;*/
         position: fixed;
@@ -40,7 +40,7 @@
             }
         }
         h1 {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 300;
             line-height: 5rem;
             @include respond(lg) {
@@ -50,6 +50,7 @@
             }
         }
         h2 {
+            font-size: 2rem;
             color: #9e0059;
             font-weight: 500;
             font-family: Raleway,sans-serif;
@@ -76,6 +77,9 @@
         display: none;
         &--show {
             display: block;
+            position: absolute;
+            top: 9rem;
+            right: 1.5rem;
             @include respond(lg) {
                 display: none;
             }
@@ -102,6 +106,9 @@
         align-items: center;
         @include respond(lg) {
             flex-direction: row;
+        }
+        h3 {
+            font-size: 2rem;
         }
     }
     /* when projects expanded */
