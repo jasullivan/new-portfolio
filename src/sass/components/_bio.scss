@@ -6,30 +6,38 @@
     background: #fff;
     z-index: 5;
     width: 100%;
-    /*justify-content: space-between;*/
-    position: absolute;
-    top: 0;
-    height: 10rem;
-    align-items: left;
-    flex-direction: row;
+    /*position: absolute;
+    top: 0;*/
+    /*height: 13rem;*/
+    height: auto;
     @include respond(lg) {
         /*display: block;*/
         position: fixed;
         left: 0px;
-        top: 60px;
+        top: 6%;
         height: auto;
         width: 35rem;
-        bottom: 60px;
+        bottom: 6%;
         flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
     }
     &__content {
-        padding-left: 2.5rem;
+        padding: 0 0 0 1.5rem;
+        position: relative;
+        /*height: 13rem;*/
+        @include respond(lg) {
+            height: auto;
+        }
     }
     &__title {
         display: flex;
-        align-items: flex-start;
+        justify-content: center;
         flex-direction: column;
+        height: 11rem;
+        padding-top: 2rem;
         @include respond(lg) {
+            height: auto;
             padding: 0 0px 30px;
         }
         img {
@@ -40,9 +48,9 @@
             }
         }
         h1 {
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 300;
-            line-height: 5rem;
+            line-height: 3rem;
             @include respond(lg) {
                 margin-top: 2rem;
                 font-size: 8rem;
@@ -51,6 +59,7 @@
         }
         h2 {
             font-size: 2rem;
+            line-height: 4rem;
             color: #9e0059;
             font-weight: 500;
             font-family: Raleway,sans-serif;
@@ -75,36 +84,28 @@
         cursor: pointer;
         /*transition: opacity 0.75s ease-in;*/
         display: none;
+        img {
+            width: 3rem;
+            height: 3rem;
+        }
         &--show {
             display: block;
             position: absolute;
-            top: 9rem;
-            right: 1.5rem;
+            top: 10rem;
+            right: 2.5rem;
+            transform: rotate(45deg);
             @include respond(lg) {
                 display: none;
             }
         }
         
     }
-    &__info {
-        height: 0;
-        font-size: 0;
-        opacity: 0;
-        display: none;
-        @include respond(lg) {
-            padding: 0 0px 30px;
-            display: block;
-            height: auto;
-            font-size: initial;
-            opacity: 1;
-            display: block;
-        }
-    }
     &__contacts {
-        padding-left: 2.5rem;
-        display: flex;
+        padding-right: 1.5rem;
+        display: none;
         align-items: center;
         @include respond(lg) {
+            display: flex;
             flex-direction: row;
         }
         h3 {
@@ -125,6 +126,42 @@
         }
     }
     /* when projects expanded */
+}
+.bio-info {
+    position: relative;
+    top: -0.5rem;
+    overflow-y: hidden;
+    @include respond(lg) {
+        padding: 0 0px 30px;
+        display: block;
+        height: auto;
+        font-size: initial;
+        opacity: 1;
+        display: block;
+        top: 0;
+        overflow-y: auto;
+    }
+    &__button {
+        display: block;
+        width: 4rem;
+        @include respond(lg) {
+            display: none;
+        }
+    }
+    &__content {
+        /*padding-top: 1rem;*/
+        height: 0px;
+        /*font-size: 0;
+        opacity: 0;*/
+        padding-top: 1rem;
+        transition: height 0.5s;
+        &--show {
+            height: 120px;
+        }
+        @include respond(lg) {
+            height: auto;
+        }
+    }
 }
 /* bio-section ends */
 
