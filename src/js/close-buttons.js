@@ -14,7 +14,7 @@ closeButtons.forEach(closeButton => {
             
             cols.forEach(col => {
                 col.querySelector('.project-col__bg-colour').classList.remove('project-col__bg-colour--mob-show'); 
-                col.querySelector('.project-col__project-title--mob').classList.remove('project-col__project-title--mob--show')
+                col.querySelector('.project-col__project-title').classList.remove('project-col__project-title--show')
 
                 col.classList.remove('project-col--closed');
                 col.classList.remove('project-col--scroll');
