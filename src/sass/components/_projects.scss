@@ -1,21 +1,19 @@
-@keyframes openCol { 
+/*@keyframes openCol { 
     0% { 
         flex: 1 0 75px;
     }
     100% { 
         flex: 0 0 0px;
-        /*flex: 1 0 0px;*/
     } 
 }
 @keyframes closeCol { 
     0% { 
         flex: 0 0 0px;
-        /*flex: 1 0 0px;*/
     }
     100% { 
         flex: 1 0 75px;
     } 
-}
+}*/
 @keyframes openBg { 
     0% { 
         height: 100%;
@@ -47,7 +45,6 @@
        
     }
     100% { 
-        /*height: 1rem;*/
         height: 14rem;
         opacity: 1;
         
@@ -55,14 +52,12 @@
 }
 @keyframes closeBgCol { 
     0% { 
-        /*height: 1rem;*/
         height: 14rem;
         opacity: 1;
         
     }
     100% { 
         height: 100%;
-        /*opacity: 0.8;*/
         opacity: 0.8;
         
     } 
@@ -82,9 +77,13 @@
         opacity: 1;
         top: 5px;
     }
+    80% { 
+        opacity: 1;
+        top: 5px;
+    }
     100% { 
         opacity: 0;
-        top: 85vh; 
+        top: 45vh; 
     } 
 }
 
@@ -112,51 +111,6 @@
         display: flex;
         align-items: center;
     }
-    /*&__project-title--desk {
-        text-align: right;
-        display: none;
-        transform: translateY(121px);
-        &--show {
-            display: block;
-            h3 {
-
-                font-size: 5rem;
-                font-weight: 300;
-                line-height: 5rem;
-            }
-            h4 {
-
-                font-size:2rem;
-            
-            }
-            @include respond(lg) {
-                h3 {display: block;}
-                h4 {display: block;}
-            }
-        }
-        .projects-section__close-button {
-            transform: translateY(-118px);
-            opacity: 0;
-            cursor: pointer;
-            transition: opacity 0.75s ease-in;
-            &--show {
-                opacity: 1;
-            }
-        }
-    }*/
-    
-
-    /*mob title was here*/
-
-    /*&--lrg {
-        @include respond(lg) {
-            width: 85%;
-            margin-left: 15%;
-        }
-        .project-columns {
-            padding: 1em;
-        }
-    }*/
 }
 .project-columns {
     padding: 0rem 0.5rem 0rem 0.5rem;
@@ -173,35 +127,13 @@
         transform: translateY(0);
     }
     &--open {
-        /*position: fixed;
-        height: 85vh;
-        top: 11rem;
-        top: 10rem;*/
-
-
-        /* removed to try and fix the height issue when changing orientation
-        on ipad */
-        /*overflow-y: hidden;*/
-        /* removed to try and fix the height issue when changing orientation
-        on ipad ends */
-
-        /*transform: translateY(11rem);*/
-        /*height: 100vh;*/
-
         height: 100%;
-        
-        /*transform: translateY(13rem);*/
-
-        /*height: 85vh;
-        padding-bottom: 2rem;*/
         background: #fff;
-        /*transition: transform 3s;*/
         @include respond(lg) {
             transform: translateY(0rem);
             position: static;
             height: calc(100vh - 100px);
             top: auto;
-            /*padding-bottom: 2rem;*/
         }
     }
 }
@@ -212,40 +144,25 @@
     position: relative;
     margin: 0rem 1rem 2rem;
     min-width: 0;
-    /*height: 10rem;*/
     height: 14rem;
     cursor: pointer;
-
-    /*overflow-y: hidden;*/
-    
-
-    /*transition: height 0.1s;*/
     @include respond(lg) {
         overflow-y: hidden;
         overflow-x: hidden;
-        /* when using flex need to specify 0 for min width and height 
-        otherwise the responsiveness is lost at an earlier screen width because of 
-        the default min width and min height */
         flex: 1 0 75px;
         margin: 0 0.5rem;
         min-height: 0;
         height: auto;
-
-
-        /*transition: flex-basis 0.5s 0.15s, flex-grow 0.5s 0.15s;
-         for safari */
+        /* for safari */
         transition: all 0.4s 0.15s;
-        &:hover {
-            /*transition: flex-basis 0.5s 0.15s, flex-grow 0.5s 0.15s;
-             for safari */
+        /*&:hover {
+             for safari 
             transition: all 0.4s 0.15s;
-        }
+        }*/
     }
-    /*&__project-title--mob {*/
     &__project-title {
         display: flex;
         flex-direction: column;
-        /*align-items: flex-start;*/
         position: absolute;
         top: 34px;
         left: 10px;
@@ -263,9 +180,6 @@
                 display: block;
             }
         }
-        /*&--show {
-            z-index: 4;
-        }*/
     }
     &__svg {
         display: none;
@@ -292,22 +206,6 @@
             }
         }
     }
-    /*&__project-title--mob {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        position: absolute;
-        top: 20px;
-        left: 10px;
-        color: #fff;
-        z-index: 4;
-        @include respond(lg) {
-            display: none;
-        }
-        &--show {
-            z-index: 4;
-        }
-    }*/
     &--regular {
         overflow-y: hidden;
     }
@@ -326,14 +224,7 @@
         height: 100%;
         @include respond(lg) {
             flex: 17 0 260px;
-            /*flex: 20 0 260px;*/
-           /*height: 100vh; 
-            overflow-y: auto;*/
             height: auto;
-            /*do i need these?
-            margin-left: 1rem;
-            margin-right: 1rem;*/
-            
         }
     }
     &--scroll {
@@ -345,17 +236,10 @@
         margin: 0 1rem;
         height: 0;
         opacity: 0;
-        /*transition: opacity 0.1s ease-in, margin 0.5s 0.5s, height 0.5s 0.5s;
-        for safari 
-        transition: all 0.4s 0.15s;
-        transition: opacity 0.1s, margin 0.75s, height 1s 0.15s;
-        transition: opacity 0.1s, margin 0.3s, height 0.3s;*/
         transition: margin 0.75s, height 0.75s;
-
         @include respond(lg) {
             opacity: 1;
             height: auto;
-            /*flex: 1 0 0px;*/
             flex: 1 0 10px;
             margin: 0;
             transition: all 0.4s 0.15s
@@ -366,102 +250,36 @@
         color: #fff;
     }
     &__bg-colour {
-        /*height: 10rem;*/
         height: 14rem;
         z-index: 4;
         width: 100%;
         position: absolute;
-       opacity: 0.9; 
-
-       /*&--one {background: #5e60ce;}
-       &--two {background: #5390d9;}
-       &--three {background: #4ea8de;}
-       &--four {background: #48bfe3;}
-       &--five {background: #56cfe1;}
-
-       &--one {background: #F2C745;}
-       &--two {background: #4225D2;}
-       &--three {background: #06D6A0;}
-       &--four {background: #1B9AAA;}
-       &--five {background: #EF476F;}*/
-
-        /*&--one {background: #F2C745;}
-        &--two {background: #EE6C4D;}
-        &--three {background: #17A398;}
-        &--four {background: #4225D2;}
-        &--five {background: #33312E;}*/
- 
-       /* &--one {background: #1B998B;}
-        &--two {background: #2D3047;}
-        &--three {background: #FFFD82;}
-        &--four {background: #FF9B71;}
-        &--five {background: #E84855;}*/
-
-       /*&--one {background: #084C61;}
-        &--two {background: #DB504A;}
-        &--three {background: #E3B505;}
-        &--four {background: #4F6D7A;}
-        &--five {background: #56A3A6;}*/
-
-        /* possible chosen colours
-        &--one {background: #390099;}
-        &--two {background: #9e0059;}
-        &--three {background: #ff0054;}
-        &--four {background: #ff5400;}
-        &--five {background: #ffbd00;}*/
+        opacity: 0.9; 
         &--one {background: #9e0059;}
         &--two {background:  #ff0054;}
         &--three {background:#ffbd00;}
         &--four {background: #ff5400;}
         &--five {background: #390099;}
-        
-        
-        /*&--one {background: #4e3bcc;}
-        &--two {background: #ad409f;}
-        &--three {background: #290af2;}
-        &--four {background: #b3c445;}
-        &--five {background: #b50b9e;}*/
-
-        /*&--one {background: #0DACD5;}
-        &--two {background: #E5FF00;}
-        &--three {background: #EF5B5B;}
-        &--four {background: #16F4D0;}
-        &--five {background: #153B50;}*/
 
         /* new to fade in col */
         transition: opacity 0.75s ease-in;
 
         @include respond(lg) {
             opacity: 1; 
+
+        transition: height 0.5s 0.25s linear, opacity 0.4s 0.15s linear; 
         }
-        /*svg {
-            opacity: 1;
-            display: block;
-            &.svg--hide {
-                opacity: 0
-            }
-        }*/
         &--mob-show {
             opacity: 1; 
         }
-        /*TRANSITION
-        transition: height 0.75s 10.5s, opacity 0.75s 11.75s;*/
-
-        
-    
         @include respond(lg) {
             height: 100%;
-            /*top: 0;
-            bottom: 0;*/
         }
     }
     &__bg {
         width: 100%;
-        /*height: 10rem;*/
         height: 14rem;
-        
         position: absolute;
-        /*top: 0;*/
         left: 0;
         z-index: 3;
         opacity: 1;
@@ -490,49 +308,22 @@
             background-position: 50% 50%;
             background-size: cover;
         }
-        
-        /*TRANSITION*/
-        /*transition: opacity 1s;
-        transition-timing-function: linear;*/
-
-        /*transition-timing-function: cubic-bezier(.66,.01,.72,.82);*/
-        
         @include respond(lg) {
             height: 100%;
-            /*top: 0;
-            bottom: 0;*/
+
+        transition: height 0.5s 0.25s linear, opacity 0.4s 0.15s linear; 
         }
     }
     &__content {
-        /*height: 0;*/
         position: relative;
         z-index: 2;
         font-size: 0;
-        
         opacity: 0;
-        /*top: 85vh;*/
         top: 45vh;
-
-        /*TRANSITION*/
-        /*transition: height 13.15s;
-        transition-timing-function: linear;*/
-
-
         @include respond(lg) {
-
-
-            /*TRANSITION*/
-            /*transition: opacity 1s 1s, top 1.25s 0.5s;
-            transition-timing-function: linear;*/
         }
     }
 }
-/*.project-col--expand .project-col__bg-colour {
-    @include respond(lg) {
-        background: rgba(255, 98, 55, 0);
-    }
-}*/
-
 .project-col__info-button {
     display: none;
     @include respond(lg) {
@@ -549,113 +340,77 @@
 }
 /* projects-section ends */
 
-/* open and closing styles */
-/*animation: once col is chosen the remaining columns slide and shrink away*/
-
-/*******************************
-/*removing this means when closed a thin col is left*/
- /*.project-col--regular.project-col--closed {
-   @include respond(lg) {
-        animation-name: openCol; 
-        animation-duration: 0.5s; 
-        animation-fill-mode: forwards; 
-        animation-timing-function: linear;
-    }
-}*/
-/*removing this means when closed a thin col is left*/
-/*******************************
-
-
-
-/*.project-col--regular {
-    @include respond(lg) {
-        animation-name: closeCol; 
-        animation-duration: 2.5s; 
-        animation-fill-mode: forwards; 
-        animation-timing-function: linear;
-    }
-}*/
 .project-col--open .project-col__bg {
-    /*opacity: 1;
-    top: 0px;
-   height: 100vh;*/
     @include respond(lg) {
-        animation-name: openBg; 
+        /*animation-name: openBg; 
         animation-duration: 0.5s; 
         animation-fill-mode: forwards; 
         animation-delay: 0.5s; 
-        animation-timing-function: linear;
-        
+        animation-timing-function: linear;*/
+        height: 0%;
+        opacity: 0;
     }
 }
 .project-col--regular .project-col__bg {
     
     @include respond(lg) {
-        animation-name: closeBg; 
+        /*animation-name: closeBg; 
         animation-duration: 0.6s; 
         animation-fill-mode: forwards; 
-        animation-timing-function: linear;
-        
+        animation-timing-function: linear;*/
+        height: 100%;
+        opacity: 1;
     }
 }
+
 .project-col--open .project-col__bg-colour {
     
     @include respond(lg) {
-        animation-name: openBgCol; 
+        /*animation-name: openBgCol; 
         animation-duration: 0.5s; 
         animation-fill-mode: forwards; 
         animation-delay: 0.5s; 
-        animation-timing-function: linear;
-        
+        animation-timing-function: linear;*/
+        height: 14rem;
+        opacity: 1;
     }
 }
 
 .project-col--regular .project-col__bg-colour {
     @include respond(lg) {
-        animation-name: closeBgCol; 
+        /*animation-name: closeBgCol; 
         animation-duration: 0.6s; 
         animation-fill-mode: forwards; 
-        animation-timing-function: linear;
+        animation-timing-function: linear;*/
+        height: 100%;
+        opacity: 0.8;
     }
 }
 .project-col--open .project-col__content {
-    /*opacity: 1;
-    top: 0px;
-   height: 100vh;*/
     opacity: 1;
-    /*top: 5vh;*/
-
-    
-   /* top: 10rem;
-    padding-bottom: 10rem;
-    transition: opacity 0.5s 0.35s ease-in, top 0.5s ease-in;*/
     padding-bottom: 2rem;
-    /*padding-top: 9rem;*/
     padding-top: 13rem;
-    /*top: 5vh;*/
     animation-name: openContent; 
-    animation-duration: 0.15s; 
+    animation-duration: 0.1s; 
     animation-fill-mode: forwards; 
     animation-delay: 0s; 
     animation-timing-function: linear;
     @include respond(lg) {
-        /*padding-top: 0rem;*/
-        /*animation-name: openContent; */
         animation-duration: 0.5s; 
-        /*animation-fill-mode: forwards;*/
-        animation-delay: 0.5s; 
-        /*animation-timing-function: linear;*/
+        animation-delay: 0.25s; 
     }
 }
 
 .project-col--regular .project-col__content {
-    
-    @include respond(lg) {
-        animation-name: closeContent; 
-        animation-duration: 0.6s; 
+    animation-name: closeContent; 
+        animation-duration: 0.75s; 
         animation-fill-mode: forwards; 
         animation-timing-function: linear;
-        
+    @include respond(lg) {
+        animation-name: closeContent; 
+        animation-duration: 0.75s; 
+        animation-fill-mode: forwards; 
+        animation-timing-function: linear;
     }
 }
 .project-col--closed svg {

@@ -40,7 +40,9 @@ const projectExpand = (e) => {
     const eTargetParent = e.target.parentElement;
     eTargetParent.classList.add('project-col--expand');
     eTargetParent.querySelector('.project-col__info-button').classList.remove('project-col__info-button--hidden');
+
     eTargetParent.querySelector('.project-col__project-title').classList.add('project-col__project-title--show');
+    
     
     // document.querySelector('.projects-section').classList.add('projects-section--expanded')
     // desktopTitlesAdd(e);
@@ -49,7 +51,9 @@ const projectContract = (e) => {
     e.target.parentElement.classList.remove('project-col--expand');
     e.target.parentElement.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden');
     
-    e.target.parentElement.querySelector('.project-col__project-title').classList.remove('project-col__project-title--show');
+    if(!e.target.parentElement.classList.contains('project-col--open')) {
+        e.target.parentElement.querySelector('.project-col__project-title').classList.remove('project-col__project-title--show');
+    }
 
     // desktopTitlesRemove(e);
 }
@@ -161,13 +165,13 @@ projectColumnContainer.addEventListener('click', e => {
             document.querySelector('.bio-section__close-button').classList.add('bio-section__close-button--show');
            
             // *******************************
-            // **********Scroll on mob **********
+            // **********Scroll on mob - especially mob header **********
             // *******************************
             // setTimeout(() => {
                 window.scroll({ top: 0, left: 0, behavior: 'smooth' });
             // },50);
             // *******************************
-            // **********Scroll on mob **********
+            // **********Scroll on mob - especially mob header **********
             // *******************************
 
             // shut info button
