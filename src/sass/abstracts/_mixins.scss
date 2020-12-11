@@ -19,7 +19,8 @@
     @media (min-width: 75em) { @content }; /****1200px****/
   }
 } 
-/*@mixin tpr-max-width {
-  max-width: 120rem;
-  margin: 0 auto;
-}*/
+@mixin col-background-pos($img) {
+  background: $img;
+  background-position: 50% 50%;
+  background-size: cover;
+}

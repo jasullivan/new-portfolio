@@ -1,0 +1,36 @@
+/* bio section */
+
+/* project columns height */
+$columns-height: calc(100vh - 100px);
+$col-height-small: 14rem;
+
+/* content positioning */
+$content-offscreen: 45vh;
+$content-onscreen: 5px;
+
+/* colours */
+$white: #fff;
+$black: #000;
+/** //body copy colour */
+$bodyCopy: #575757;
+
+/* background colours */
+$col-one: #9e0059;
+$col-two: #ff0054;
+$col-three: #ffbd00;
+$col-four: #ff5400;
+$col-five: #390099;
+
+$blueTransparent: rgba(3, 21, 69, 0.7);
+
+
+
+/** //font roboto */
+$fontRobotoLight:   'robotoLight', Arial, Helvetica, sans-serif;
+$fontRobotoRegular:   'robotoRegular', Arial, Helvetica, sans-serif;
+$fontRobotoBold:   'robotoBold', Arial, Helvetica, sans-serif;
+$fontRobotoBlack:   'robotoBlack', Arial, Helvetica, sans-serif;
+
+/** //font hvn Zooja */
+$fontHVNZoojaLight: 'hvnZoojaLight', Arial, Helvetica, sans-serif;
+$fontHVNZoojaRegular: 'hvnZoojaRegular', Arial, Helvetica, sans-serif;

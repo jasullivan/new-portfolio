@@ -1,20 +1,5 @@
-/*@keyframes openCol { 
-    0% { 
-        flex: 1 0 75px;
-    }
-    100% { 
-        flex: 0 0 0px;
-    } 
-}
-@keyframes closeCol { 
-    0% { 
-        flex: 0 0 0px;
-    }
-    100% { 
-        flex: 1 0 75px;
-    } 
-}*/
-@keyframes openBg { 
+
+/*@keyframes openBg { 
     0% { 
         height: 100%;
         opacity: 1;
@@ -45,14 +30,14 @@
        
     }
     100% { 
-        height: 14rem;
+        height: $col-height-small;
         opacity: 1;
         
     } 
 }
 @keyframes closeBgCol { 
     0% { 
-        height: 14rem;
+        height: $col-height-small;
         opacity: 1;
         
     }
@@ -61,29 +46,29 @@
         opacity: 0.8;
         
     } 
-}
+}*/
 @keyframes openContent { 
     0% { 
         opacity: 0;
-        top: 45vh; 
+        top: $content-offscreen; 
     }
     100% { 
         opacity: 1;
-        top: 5px;
+        top: $content-onscreen;
     } 
 }
 @keyframes closeContent { 
     0% { 
         opacity: 1;
-        top: 5px;
+        top: $content-onscreen;
     }
     80% { 
         opacity: 1;
-        top: 5px;
+        top: $content-onscreen;
     }
     100% { 
         opacity: 0;
-        top: 45vh; 
+        top: $content-offscreen; 
     } 
 }
 
@@ -91,60 +76,56 @@
 /* header and project-columns - parent */
 .projects-section {
     width: 100%;
-    /*max-width: 1200px;*/
     position: relative;
-    /*transform: translateY(0rem);*/
     z-index: 1;
-    
     display: flex;
     @include respond(lg) {
-        transform: translateY(0rem);
-        padding-top: 0;
+        /*transform: translateY(0rem);
+        padding-top: 0;*/
         position: fixed;
-        overflow: visible;
-        width: calc(100% - 35rem);
-        right: 0;
-        height: 100%;
         top: 0;
         bottom: 0;
-
+        right: 0;
+        width: calc(100% - 35rem);
+        height: 100%;
+        overflow: visible;
         display: flex;
         align-items: center;
     }
 }
+/* projects-section - found in index */
+/* header and project-columns - parent ends */ 
+
 .project-columns {
-    padding: 0rem 0.5rem 0rem 0.5rem;
+    padding: 0rem 0.5rem;
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 0rem;
-    /*transform: translateY(13rem);*/
-    transition: transform 1s;
+    /*margin-bottom: 0rem;
+    transition: transform 1s;*/
     @include respond(lg) {
         flex-direction: row;
-        height: calc(100vh - 100px);
+        height: $columns-height;
         width: 100%;
-        transform: translateY(0);
+        /*transform: translateY(0);*/
     }
     &--open {
         height: 100%;
-        background: #fff;
+        background: $white;
         @include respond(lg) {
-            transform: translateY(0rem);
-            position: static;
-            height: calc(100vh - 100px);
-            top: auto;
+            /*transform: translateY(0rem);
+            position: static;*/
+            height: $columns-height;
+            /*top: auto;*/
         }
     }
 }
-.project-col .project-col__bg, .project-col .project-col__content, .project-col .project-col__info-button, .project-col__project-title, .project-col__bg-colour--mob-show {
-    pointer-events: none;
-}
+
 .project-col {
     position: relative;
     margin: 0rem 1rem 2rem;
     min-width: 0;
-    height: 14rem;
+    height: $col-height-small;
     cursor: pointer;
     @include respond(lg) {
         overflow-y: hidden;
@@ -153,7 +134,7 @@
         margin: 0 0.5rem;
         min-height: 0;
         height: auto;
-        /* for safari */
+        /* for safari (flex) */
         transition: all 0.4s 0.15s;
         /*&:hover {
              for safari 
@@ -166,7 +147,7 @@
         position: absolute;
         top: 34px;
         left: 10px;
-        color: #fff;
+        color: $white;
         z-index: 4;
         h3 {
             font-weight: 300;
@@ -191,7 +172,6 @@
             z-index: 5;
             max-width: 3rem;
             max-height: 3rem;
-
         }
         &--hold {
             pointer-events: none;
@@ -206,6 +186,8 @@
             }
         }
     }
+
+    /* classes added and removed by js */
     &--regular {
         overflow-y: hidden;
     }
@@ -218,9 +200,6 @@
         }
     }
     &--open {
-        /*******************************/
-        /* added and removed in JS now */
-        /*******************************/
         height: 100%;
         @include respond(lg) {
             flex: 17 0 260px;
@@ -245,29 +224,40 @@
             transition: all 0.4s 0.15s
         }
     }
+    /* classes added by js ends */
+
     &__info-button {
-        left: 30px;
-        color: #fff;
+        display: none;
+        @include respond(lg) {
+            display: block;
+            position: absolute;
+            top: 10rem;
+            left: 0;
+            z-index: 5;
+            margin: 10px;
+            color: $white;
+            &--hidden {
+                opacity: 0;
+            }
+        }
     }
+
     &__bg-colour {
-        height: 14rem;
-        z-index: 4;
         width: 100%;
+        height: $col-height-small;
         position: absolute;
+        z-index: 4;
         opacity: 0.9; 
-        &--one {background: #9e0059;}
-        &--two {background:  #ff0054;}
-        &--three {background:#ffbd00;}
-        &--four {background: #ff5400;}
-        &--five {background: #390099;}
+        &--one {background: $col-one;}
+        &--two {background: $col-two;}
+        &--three {background: $col-three;}
+        &--four {background: $col-four;}
+        &--five {background: $col-five;}
 
-        /* new to fade in col */
         transition: opacity 0.75s ease-in;
-
         @include respond(lg) {
             opacity: 1; 
-
-        transition: height 0.5s 0.25s linear, opacity 0.4s 0.15s linear; 
+            transition: height 0.5s 0.25s linear, opacity 0.4s 0.15s linear; 
         }
         &--mob-show {
             opacity: 1; 
@@ -278,40 +268,29 @@
     }
     &__bg {
         width: 100%;
-        height: 14rem;
+        height: $col-height-small;
         position: absolute;
         left: 0;
         z-index: 3;
         opacity: 1;
         &--one {
-            background: url(../img/pic_1.jpg);
-            background-position: 50% 50%;
-            background-size: cover;
+            @include col-background-pos(url('../img/pic_1.jpg'));
         }
         &--two {
-            background: url(../img/pic_2.jpg);
-            background-position: 50% 50%;
-            background-size: cover;
+            @include col-background-pos(url('../img/pic_2.jpg'));
         }
         &--three {
-            background: url(../img/pic_3.jpg);
-            background-position: 50% 50%;
-            background-size: cover;
+            @include col-background-pos(url('../img/pic_3.jpg'));
         }
         &--four {
-            background: url(../img/pic_4.jpg);
-            background-position: 50% 50%;
-            background-size: cover;
+            @include col-background-pos(url('../img/pic_4.jpg'));
         }
         &--five {
-            background: url(../img/pic_5.jpg);
-            background-position: 50% 50%;
-            background-size: cover;
+            @include col-background-pos(url('../img/pic_5.jpg'));
         }
         @include respond(lg) {
             height: 100%;
-
-        transition: height 0.5s 0.25s linear, opacity 0.4s 0.15s linear; 
+            transition: height 0.5s 0.25s linear, opacity 0.4s 0.15s linear; 
         }
     }
     &__content {
@@ -319,25 +298,34 @@
         z-index: 2;
         font-size: 0;
         opacity: 0;
-        top: 45vh;
-        @include respond(lg) {
+        top: $content-offscreen;
+        /* content classes - needs BEM perhaps separate */
+        .img-text-overlay {
+            position: relative;
+            img {
+                width: 100%;
+            }
+            p {
+                position: absolute;
+                bottom: 30px;
+                left: 30px;
+                color: white;
+            }
+        }
+        .title-and-bio {
+            width: 70%;
+            height: 200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p {
+                flex: 1;
+            }
         }
     }
 }
-.project-col__info-button {
-    display: none;
-    @include respond(lg) {
-        display: block;
-        position: absolute;
-        top: 10rem;
-        left: 0;
-        z-index: 5;
-        margin: 10px;
-    }
-}
-.project-col__info-button--hidden {
-    opacity: 0;
-}
+
 /* projects-section ends */
 
 .project-col--open .project-col__bg {
@@ -371,11 +359,10 @@
         animation-fill-mode: forwards; 
         animation-delay: 0.5s; 
         animation-timing-function: linear;*/
-        height: 14rem;
+        height: $col-height-small;
         opacity: 1;
     }
 }
-
 .project-col--regular .project-col__bg-colour {
     @include respond(lg) {
         /*animation-name: closeBgCol; 
@@ -400,12 +387,11 @@
         animation-delay: 0.25s; 
     }
 }
-
 .project-col--regular .project-col__content {
     animation-name: closeContent; 
-        animation-duration: 0.75s; 
-        animation-fill-mode: forwards; 
-        animation-timing-function: linear;
+    animation-duration: 0.75s; 
+    animation-fill-mode: forwards; 
+    animation-timing-function: linear;
     @include respond(lg) {
         animation-name: closeContent; 
         animation-duration: 0.75s; 
@@ -413,18 +399,18 @@
         animation-timing-function: linear;
     }
 }
-.project-col--closed svg {
+/*.project-col--closed svg {
     display: none;
     &.openIcon {
         display: flex;
         width: 100%;
         margin: 5px 0;
     }
-}
+}*/
 /* expand and open styles ends */
 
 /* project content style */
-.img-text-overlay {
+/*.img-text-overlay {
     position: relative;
     img {
         width: 100%;
@@ -449,4 +435,4 @@
 }
 .hide {
     display: none;
-}
+}*/

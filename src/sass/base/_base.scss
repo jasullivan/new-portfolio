@@ -7,23 +7,6 @@
     /* better to inherit this from body so it's more future proof and is the standard approach */
     box-sizing: inherit; 
 }
-
-/* * {
-//     padding: 0;
-//     margin: 0;
-//     color: #000;
-//     font-family: arial;
-//     box-sizing: border-box;
-   } */
-
-html, body {
-    @include respond(lg) {
-        /*height: 100%;*/
-
-        /*do i need this? doesnt work on safari 
-        overflow-y: hidden;*/
-    }
-}
 html {
     /* needs to be % so that it doesn't overide the browser default size. */
     /* this would mean users wouldn't be able to zoom in */
@@ -36,28 +19,18 @@ body {
     box-sizing: border-box; 
 }
 .wrapper {
-    /*max-width: 1500px;*/
     width: 100%;
-    /* height: 100%; */
     margin: 0 auto;
     flex-direction: column;
-    /*overflow-y: hidden;*/
-
-
     position: relative;
     margin: 0 auto;
     display: flex;
     @include respond(lg) {
         position: fixed;
         flex-direction: row;
-        /*height: 100%;
-        overflow-y: initial;*/
     }
     &.open {
         .bio-section {
-            /*z-index: 2;
-            opacity: 0;*/
-
             opacity: 1;
             z-index: 6;
             @include respond(lg) {
@@ -66,22 +39,9 @@ body {
             }
         }
         .projects-section {
-            /*padding-top: 0;
-            transform: translateY(0rem);
-            background: #f7f7f7;*/
-            /*z-index: 4;*/
-            
             @include respond(lg) {
-                background: #fff;
+                background: $white;
             }
-
-
-            /*header {
-                opacity: 0;
-            }*/
-
-
-
         }
         footer {
             position: fixed;
@@ -91,15 +51,13 @@ body {
     }
 
 
-    /*to stop double scroll on and 100vh so project fully scrolls*/
+    /*to stop double scroll on and 100vh so project fully scrolls
     &.overflowHide {
-        /*overflow-y: hidden;
-        height: 100vh;*/
         @include respond(lg) {
             overflow-y: auto;
             height: auto;
         }
-    }
+    }*/
 }
 
 li {
@@ -107,5 +65,8 @@ li {
 }
 
 .project-col__bg-colour * {
+    pointer-events: none;
+}
+.project-col .project-col__bg, .project-col .project-col__content, .project-col .project-col__info-button, .project-col__project-title, .project-col__bg-colour--mob-show {
     pointer-events: none;
 }
