@@ -135,7 +135,7 @@ projectColumnContainer.addEventListener('click', e => {
             projectColumn.classList.remove('project-col--expand');
             projectColumn.classList.remove('project-col--regular');
             projectColumn.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
-            projectColumn.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
+            // projectColumn.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
 
             e.target.parentElement.querySelector('.project-col__svg').classList.remove('project-col__svg--hold');
             e.target.parentElement.querySelector('.project-col__close-button').classList.add('project-col__close-button--show');
@@ -195,7 +195,7 @@ projectColumnContainer.addEventListener('click', e => {
 
             projectColumn.classList.remove('project-col--regular');
             projectColumn.querySelector('.project-col__info-button').classList.add('project-col__info-button--hidden'); 
-            projectColumn.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
+            // projectColumn.querySelector('.project-col__svg').classList.add('project-col__svg--hidden'); 
             
             // desktopTitlesAdd(e);
             
@@ -239,9 +239,9 @@ mobCloseButton.addEventListener('click', e => {
                     behavior: 'smooth'
                 
                 }, console.log('scroll has been moved to the top'))
-                setTimeout(() => { 
-                    col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden');
-                }, 300);
+                // setTimeout(() => { 
+                //     col.querySelector('.project-col__svg').classList.remove('project-col__svg--hidden');
+                // }, 300);
                 setTimeout(() => { 
                     col.querySelector('.project-col__project-title').classList.remove('project-col__project-title--show')
                 }, 1000);

@@ -1,5 +1,6 @@
 const closeButtons = document.querySelectorAll('.project-col__close-button');
 const cols = document.querySelectorAll('.project-col');
+const mobCloseButton = document.querySelector('.bio-section__close-button');
 
 closeButtons.forEach(closeButton => {
     // console.log(closeButton)
@@ -7,6 +8,8 @@ closeButtons.forEach(closeButton => {
         // if(e.target.matches('.project-col__close-button img')) {
             // console.log(e.target, ' e.target')
             e.target.parentElement.querySelector('.project-col__close-button').classList.remove('project-col__close-button--show');
+            
+            mobCloseButton.classList.remove('bio-section__close-button--show');
 
             wrapper.classList.remove('open');
             projectColumnContainer.classList.remove('project-columns--open');

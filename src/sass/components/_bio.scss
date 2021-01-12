@@ -97,8 +97,8 @@
     &__contacts {
         padding-right: 1.5rem;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        align-items: center;
         @include respond(lg) {
             flex-direction: row;
         }
